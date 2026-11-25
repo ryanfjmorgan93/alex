@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Château Embankment · Christmas Cuvée">
+<meta property="og:description" content="A formal (and festive) enquiry for Alex. Tap to answer.">
+<meta name="theme-color" content="#0e1f1a">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}</style>
+</head><body>
+<title>Château Embankment</title>
+<meta name="description" content="A formal enquiry for Alex. Friday 27 November.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Karla:wght@400;500;700&family=Gochi+Hand&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single wine label hung under a string of fairy lights on a candlelit winter-night ground. The label asks the question; saying yes peels back to the tasting notes (the plan) and a map with one hidden pin. Deliberately single dark theme. */
+:root{
+  --cellar:#0e1f1a;      /* bottle-green night */
+  --cellar2:#163029;
+  --paper:#efeadb;       /* label stock */
+  --ink:#1b2621;
+  --foil:#c8a24c;        /* gold foil */
+  --foil2:#9c7a2c;
+  --holly:#c22a40;
+  --candle:#ffcf86;
+  --leaf:#2f6b4c;
+  --frost:#e7efe9;
+  --muted:#9db3a8;
+  --river:#1d3a46;
+  --display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --body:"Karla",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hand:"Gochi Hand","Comic Sans MS","Chalkboard SE",cursive;
+  --mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{background:var(--cellar);color:var(--frost)}
+body{font-family:var(--body);font-size:16px;line-height:1.55;min-height:100%;
+  background:
+    radial-gradient(70% 30% at 50% 0%,rgba(255,190,110,.16),transparent 70%),
+    radial-gradient(60% 40% at 85% 55%,rgba(194,42,64,.10),transparent 70%),
+    radial-gradient(110% 55% at 50% 0%,var(--cellar2),var(--cellar) 72%);
+  background-color:var(--cellar);}
+/* fairy lights */
+.lights{display:block;width:100%;height:auto;margin:-6px 0 -14px;overflow:visible}
+.lights .b{animation:twinkle 3.2s ease-in-out infinite}
+.lights .b:nth-of-type(3n){animation-delay:-1.1s}
+.lights .b:nth-of-type(3n+1){animation-delay:-2.2s}
+.lights .b:nth-of-type(4n){animation-duration:4.1s}
+@keyframes twinkle{0%,100%{opacity:1}50%{opacity:.45}}
+.holly{position:absolute;width:86px;height:auto;top:-22px;right:-14px;transform:rotate(14deg);filter:drop-shadow(0 6px 10px rgba(0,0,0,.35))}
+.mistle{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:-6px}
+.mistle svg{width:64px;height:auto}
+.mistle span{font-family:var(--hand);font-size:17px;color:var(--muted)}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;max-width:560px;margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:24px 64px;display:flex;flex-direction:column;gap:28px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--foil);text-align:center}
+
+/* ---------- the label ---------- */
+.label{position:relative;overflow:visible;background:var(--paper);color:var(--ink);border-radius:6px;padding:26px 22px 22px;
+  text-align:center;display:flex;flex-direction:column;gap:10px;
+  box-shadow:0 0 0 1px var(--foil) inset,0 0 0 6px var(--paper) inset,0 0 0 7px var(--foil2) inset,0 24px 60px -24px rgba(0,0,0,.7)}
+.crest{width:54px;height:54px;margin:0 auto}
+.estate{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--foil2)}
+.label h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,10vw,50px);line-height:.98;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.label h1 em{display:block;font-weight:500;font-size:.5em;letter-spacing:.02em;margin-top:6px;color:var(--holly)}
+.rule{height:1px;background:var(--foil);opacity:.7;margin:4px 18%}
+.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:13px}
+.specs div{display:flex;flex-direction:column;gap:1px;min-width:0}
+.specs b{font-family:var(--display);font-size:17px;font-weight:700}
+.specs span{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6c6450}
+.notes{font-family:var(--display);font-style:italic;font-size:15px;color:#3b4740;margin:0 auto;max-width:36ch}
+.small{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#7b735f;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+
+/* ---------- the question ---------- */
+.ask{display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center}
+.ask h2{font-family:var(--display);font-weight:500;font-size:clamp(28px,8vw,38px);line-height:1.1;margin:0;text-wrap:balance}
+.ask h2 i{color:var(--foil)}
+.arena{position:relative;width:100%;height:150px}
+.btn{font:700 18px/1 var(--body);border:0;border-radius:999px;padding:16px 30px;cursor:pointer;touch-action:manipulation;
+  transition:transform .18s ease,background .2s}
+.btn:focus-visible{outline:3px solid var(--foil);outline-offset:3px}
+#yes{position:absolute;left:50%;top:50%;transform:translate(-112%,-50%);background:var(--foil);color:var(--ink);box-shadow:0 10px 30px -10px rgba(200,162,76,.7)}
+#yes:hover{background:#dbb65d}
+#no{position:absolute;left:50%;top:50%;transform:translate(12%,-50%);background:transparent;color:var(--frost);border:1.5px solid rgba(231,239,233,.4);
+  transition:left .28s cubic-bezier(.2,.8,.2,1),top .28s cubic-bezier(.2,.8,.2,1),transform .2s,font-size .2s,padding .2s}
+.quip{font-family:var(--hand);font-size:22px;color:var(--muted);min-height:1.4em;margin:0}
+
+/* ---------- revealed plan ---------- */
+.plan{display:flex;flex-direction:column;gap:28px}
+.plan[hidden]{display:none!important}
+.cheers{text-align:center;display:flex;flex-direction:column;gap:6px}
+.cheers h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,9vw,42px);margin:0;line-height:1.05}
+.cheers p{margin:0;font-family:var(--hand);font-size:22px;color:var(--foil)}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center}
+.count div{border:1px solid rgba(200,162,76,.35);border-radius:10px;padding:10px 4px}
+.count b{display:block;font-family:var(--display);font-weight:700;font-size:28px;color:var(--foil);font-variant-numeric:tabular-nums;line-height:1.1}
+.count span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--foil);margin:0 0 10px}
+
+/* route */
+.route{background:rgba(231,239,233,.05);border:1px solid rgba(231,239,233,.12);border-radius:12px;padding:14px 14px 12px}
+.route p{margin:8px 0 0;font-size:14px;color:var(--muted)}
+.route p b{color:var(--frost)}
+.line-wrap{overflow-x:auto}
+.line-svg{display:block;width:100%;height:auto}
+.linecap{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+
+/* map */
+.map{background:var(--paper);border-radius:10px;padding:8px;position:relative}
+.map svg{display:block;width:100%;height:auto;max-width:100%}
+.pin{cursor:pointer}
+.pin:focus{outline:none}
+.pin:focus-visible circle.halo,.pin:hover circle.halo{stroke:var(--holly);stroke-width:3}
+.pin.active circle.dot{fill:var(--holly)}
+#mystery .dot{fill:var(--ink)}
+#mystery.found .dot{fill:var(--holly)}
+@keyframes wob{0%,100%{transform:rotate(0)}20%{transform:rotate(-10deg)}40%{transform:rotate(9deg)}60%{transform:rotate(-6deg)}}
+#mystery .gift{transform-box:fill-box;transform-origin:50% 100%;animation:wob 2.6s ease-in-out infinite}
+.mapnote{font-family:var(--hand);font-size:19px;color:var(--ink);text-align:center;margin:4px 0 2px}
+.detail{background:rgba(231,239,233,.06);border:1px solid rgba(231,239,233,.14);border-radius:12px;padding:14px 16px;min-height:84px}
+.detail b{color:var(--foil)}
+.detail .t{font-family:var(--mono);font-size:12px;color:var(--muted);display:block;margin-bottom:2px}
+.detail.surprise{border-color:var(--holly);background:rgba(179,40,60,.14)}
+
+/* tasting notes timeline */
+.notes-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.note{display:grid;grid-template-columns:58px 1fr;gap:14px;cursor:pointer;border-radius:8px}
+.note:focus-visible{outline:2px solid var(--foil);outline-offset:2px}
+.note .tm{font-family:var(--mono);font-size:14px;color:var(--foil);padding-top:3px;font-variant-numeric:tabular-nums}
+.note .bd{border-left:1px solid rgba(200,162,76,.4);padding:0 0 20px 16px;position:relative;min-width:0}
+.note .bd::before{content:"";position:absolute;left:-5px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--foil)}
+.note:last-child .bd{border-left-color:transparent}
+.note h4{margin:0;font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2}
+.note p{margin:2px 0 0;font-size:14px;color:var(--muted)}
+.note .aside{font-family:var(--hand);font-size:18px;color:var(--frost);opacity:.85}
+
+.dresscode{border:1px dashed rgba(200,162,76,.45);border-radius:12px;padding:16px;text-align:center;display:flex;flex-direction:column;gap:6px}
+.dresscode p{margin:0}
+.dc-main{font-family:var(--display);font-weight:700;font-size:22px}
+.dc-hand{font-family:var(--hand);font-size:22px;color:var(--candle);line-height:1.25}
+.dc-small{font-size:13px;color:var(--muted)}
+.dress{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.dress div{border:1px dashed rgba(231,239,233,.25);border-radius:10px;padding:10px 6px;font-size:13px;color:var(--muted);min-width:0}
+.dress b{display:block;color:var(--frost);font-size:14px}
+.foot{text-align:center;font-family:var(--hand);font-size:22px;color:var(--foil);margin:0}
+.fine{text-align:center;font-size:12px;color:var(--muted);margin:-14px 0 0}
+@media (max-width:420px){.specs b{font-size:15px}.note{grid-template-columns:50px 1fr;gap:10px}}
+@media (prefers-reduced-motion:reduce){#mystery .gift{animation:none}#no{transition:none}.lights .b{animation:none}}
+</style>
+
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="wrap">
+  <svg class="lights" viewBox="0 0 520 60" aria-hidden="true"><path d="M0 10 Q 140 50 260 12 Q 380 50 520 10" fill="none" stroke="#55635c" stroke-width="1.6"/><g class="b"><circle cx="20" cy="23" r="9" fill="#ffcf86" opacity=".28"/><rect x="17.5" y="13" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="20" cy="22" rx="4.2" ry="6" fill="#ffcf86"/></g><g class="b"><circle cx="60" cy="34" r="9" fill="#c22a40" opacity=".28"/><rect x="57.5" y="24" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="60" cy="33" rx="4.2" ry="6" fill="#c22a40"/></g><g class="b"><circle cx="100" cy="42" r="9" fill="#f4efe2" opacity=".28"/><rect x="97.5" y="32" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="100" cy="41" rx="4.2" ry="6" fill="#f4efe2"/></g><g class="b"><circle cx="140" cy="45" r="9" fill="#c8a24c" opacity=".28"/><rect x="137.5" y="35" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="140" cy="44" rx="4.2" ry="6" fill="#c8a24c"/></g><g class="b"><circle cx="180" cy="42" r="9" fill="#2f9a6a" opacity=".28"/><rect x="177.5" y="32" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="180" cy="41" rx="4.2" ry="6" fill="#2f9a6a"/></g><g class="b"><circle cx="220" cy="34" r="9" fill="#ffcf86" opacity=".28"/><rect x="217.5" y="24" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="220" cy="33" rx="4.2" ry="6" fill="#ffcf86"/></g><g class="b"><circle cx="260" cy="23" r="9" fill="#c22a40" opacity=".28"/><rect x="257.5" y="13" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="260" cy="22" rx="4.2" ry="6" fill="#c22a40"/></g><g class="b"><circle cx="300" cy="34" r="9" fill="#f4efe2" opacity=".28"/><rect x="297.5" y="24" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="300" cy="33" rx="4.2" ry="6" fill="#f4efe2"/></g><g class="b"><circle cx="340" cy="42" r="9" fill="#c8a24c" opacity=".28"/><rect x="337.5" y="32" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="340" cy="41" rx="4.2" ry="6" fill="#c8a24c"/></g><g class="b"><circle cx="380" cy="45" r="9" fill="#2f9a6a" opacity=".28"/><rect x="377.5" y="35" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="380" cy="44" rx="4.2" ry="6" fill="#2f9a6a"/></g><g class="b"><circle cx="420" cy="42" r="9" fill="#ffcf86" opacity=".28"/><rect x="417.5" y="32" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="420" cy="41" rx="4.2" ry="6" fill="#ffcf86"/></g><g class="b"><circle cx="460" cy="34" r="9" fill="#c22a40" opacity=".28"/><rect x="457.5" y="24" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="460" cy="33" rx="4.2" ry="6" fill="#c22a40"/></g><g class="b"><circle cx="500" cy="23" r="9" fill="#f4efe2" opacity=".28"/><rect x="497.5" y="13" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="500" cy="22" rx="4.2" ry="6" fill="#f4efe2"/></g></svg>
+  <div class="kicker">A formal (and festive) enquiry for Alex</div>
+
+  <section class="label" aria-label="Wine label: Château Embankment, Grand Cru Date, Friday 27 November 2026">
+    <svg class="holly" viewBox="0 0 90 70" aria-hidden="true">
+      <path d="M44 38 C 30 20, 12 22, 4 30 C 12 30, 14 36, 10 42 C 18 38, 22 44, 20 50 C 28 44, 38 46, 44 38 Z" fill="#2f6b4c"/>
+      <path d="M46 36 C 56 16, 76 12, 86 18 C 78 20, 78 26, 82 32 C 74 30, 70 36, 72 42 C 64 36, 54 40, 46 36 Z" fill="#26593f"/>
+      <path d="M44 38 L 14 33 M46 36 L 80 21" stroke="#1c3f2d" stroke-width="1.2"/>
+      <circle cx="43" cy="42" r="6" fill="#c22a40"/><circle cx="52" cy="44" r="5.5" fill="#a81f34"/><circle cx="47" cy="50" r="5.5" fill="#c22a40"/>
+      <circle cx="41" cy="40" r="1.6" fill="#fff" opacity=".6"/><circle cx="50" cy="42" r="1.4" fill="#fff" opacity=".5"/>
+    </svg>
+    <svg class="crest" viewBox="0 0 54 54" aria-hidden="true">
+      <circle cx="27" cy="27" r="25" fill="none" stroke="#9c7a2c" stroke-width="1.5"/>
+      <g fill="#c8a24c">
+        <circle cx="21" cy="22" r="4.2"/><circle cx="30" cy="22" r="4.2"/><circle cx="25.5" cy="29.5" r="4.2"/>
+        <circle cx="34.5" cy="29.5" r="4.2"/><circle cx="30" cy="37" r="4.2"/>
+      </g>
+      <path d="M26 17 C 27 12, 31 11, 34 12" stroke="#1b2621" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    </svg>
+    <div class="estate">Christmas Cuvée · Appellation London</div>
+    <h1>Château Embankment<em>Blanc, obviously</em></h1>
+    <div class="rule"></div>
+    <div class="specs">
+      <div><b>Fri 27</b><span>November</span></div>
+      <div><b>7:30pm</b><span>Uncorked</span></div>
+      <div><b>2026</b><span>Vintage</span></div>
+    </div>
+    <p class="notes">Notes of fairy lights, hot cider and rink-side gossip, finishing on a glass of something white by candlelight. No red was harmed in the making of this evening.</p>
+    <div class="small"><span>Bottled by Ry</span><span>750 ml of chat</span><span>Best served under fairy lights</span></div>
+  </section>
+
+  <section class="ask" id="ask">
+    <div class="mistle" aria-hidden="true">
+      <svg viewBox="0 0 64 56"><path d="M32 0 V 14" stroke="#c8a24c" stroke-width="1.4"/>
+        <path d="M32 14 C 26 14, 24 18, 22 22" stroke="#c22a40" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M32 14 C 38 14, 40 18, 42 22" stroke="#c22a40" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <ellipse cx="20" cy="32" rx="6" ry="13" transform="rotate(40 20 32)" fill="#4f8a5e"/>
+        <ellipse cx="44" cy="32" rx="6" ry="13" transform="rotate(-40 44 32)" fill="#3f7a50"/>
+        <ellipse cx="32" cy="36" rx="5" ry="12" fill="#5c9a69"/>
+        <circle cx="29" cy="24" r="3.4" fill="#f4efe2"/><circle cx="35" cy="24" r="3.4" fill="#f4efe2"/><circle cx="32" cy="28" r="3.4" fill="#e9e3d2"/></svg>
+      <span>mistletoe sold separately</span>
+    </div>
+    <h2>Alex, will you go on <i>a date with me?</i></h2>
+    <div class="arena" id="arena">
+      <button class="btn" id="yes" type="button">Yes</button>
+      <button class="btn" id="no" type="button">No</button>
+    </div>
+    <p class="quip" id="quip" aria-live="polite"></p>
+  </section>
+
+  <section class="plan" id="plan" hidden>
+    <div class="cheers">
+      <h2>Excellent choice.</h2>
+      <p>Very mature. Here's the plan.</p>
+    </div>
+
+    <div>
+      <div class="count" aria-live="off">
+        <div><b id="cd">--</b><span>days</span></div>
+        <div><b id="ch">--</b><span>hrs</span></div>
+        <div><b id="cm">--</b><span>mins</span></div>
+        <div><b id="cs">--</b><span>secs</span></div>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="sec">Getting there</h3>
+      <div class="route">
+        <div class="line-wrap">
+          <p class="linecap">Northern line · northbound · about 15 min</p>
+          <svg class="line-svg" viewBox="0 0 640 150" role="img" aria-label="Northern line northbound, Clapham Common to Embankment, six stops, about fifteen minutes">
+            <line x1="40" y1="75" x2="600" y2="75" stroke="#e7efe9" stroke-width="9" stroke-linecap="round"/>
+            <g font-family="Karla, sans-serif" font-size="21" fill="#e7efe9" text-anchor="middle">
+              <circle cx="40" cy="75" r="15" fill="#c8a24c" stroke="#e7efe9" stroke-width="4"/>
+              <text x="58" y="122" font-weight="700" text-anchor="start" dx="-34">Clapham Common</text>
+              <circle cx="133" cy="75" r="8" fill="#0e1f1a" stroke="#e7efe9" stroke-width="4"/><text x="133" y="40">Clapham N</text>
+              <circle cx="226" cy="75" r="8" fill="#0e1f1a" stroke="#e7efe9" stroke-width="4"/>
+              <circle cx="320" cy="75" r="8" fill="#0e1f1a" stroke="#e7efe9" stroke-width="4"/><text x="320" y="40">Oval</text>
+              <circle cx="413" cy="75" r="10" fill="#0e1f1a" stroke="#c8a24c" stroke-width="4"/><text x="413" y="122" fill="#c8a24c">Kennington</text>
+              <circle cx="506" cy="75" r="8" fill="#0e1f1a" stroke="#e7efe9" stroke-width="4"/><text x="506" y="40">Waterloo</text>
+              <circle cx="600" cy="75" r="15" fill="#c8a24c" stroke="#e7efe9" stroke-width="4"/>
+              <text x="600" y="122" font-weight="700" text-anchor="end" dx="22">Embankment</text>
+            </g>
+          </svg>
+        </div>
+        <p><b>Northern line, no change.</b> Hop on a train marked <b>"via Charing Cross"</b>. If a "via Bank" one turns up first, ride it to Kennington and swap across the platform.</p>
+        <p><b>Meet at Embankment, river exit, 7:30pm.</b> I'll be the one by the footbridge steps looking suspiciously organised.</p>
+        <p>The Tube strike ends Friday lunchtime and it should be running normally by the evening. Worth a glance at TfL before you leave.</p>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="sec">The map</h3>
+      <figure class="map" style="margin:0">
+        <svg id="mapsvg" viewBox="0 0 600 420" role="group" aria-label="Walking map from Embankment to Southbank, Somerset House, Covent Garden and Maiden Lane. Tap a pin.">
+          <rect x="0" y="0" width="600" height="420" fill="#efeadb"/>
+          <path d="M0 300 C 150 285, 260 300, 360 290 S 520 250, 600 238 L 600 300 C 520 312, 440 345, 360 350 S 150 350, 0 362 Z" fill="#c9d7d6" stroke="#9fb6b5" stroke-width="1.5"/>
+          <text x="470" y="296" font-family="DM Mono, monospace" font-size="11" fill="#5d7271" letter-spacing="3">RIVER THAMES</text>
+          <path d="M100 214 L 540 190" stroke="#d8d0bb" stroke-width="8" stroke-linecap="round" fill="none"/>
+          <text x="470" y="182" font-family="Karla, sans-serif" font-size="11" fill="#7b735f">Strand</text>
+          <line x1="178" y1="262" x2="196" y2="352" stroke="#8d8672" stroke-width="5" stroke-linecap="round"/>
+          <text x="80" y="318" font-family="Karla, sans-serif" font-size="11" fill="#7b735f">Golden Jubilee</text>
+          <text x="104" y="331" font-family="Karla, sans-serif" font-size="11" fill="#7b735f">footbridge</text>
+          <line x1="372" y1="245" x2="380" y2="352" stroke="#8d8672" stroke-width="5" stroke-linecap="round"/>
+          <text x="390" y="320" font-family="Karla, sans-serif" font-size="11" fill="#7b735f">Waterloo Bridge</text>
+          <path d="M172 250 L 186 300 L 200 362 L 250 372 L 340 366 L 378 352 L 374 300 L 372 245 L 392 222 M 392 222 L 350 160 L 300 98 M 300 98 L 262 148" fill="none" stroke="#b3283c" stroke-width="3" stroke-dasharray="7 6" stroke-linecap="round" stroke-linejoin="round"/>
+          <g font-family="Karla, sans-serif" font-size="12" fill="#1b2621">
+            <rect x="160" y="240" width="24" height="15" rx="7.5" fill="#efeadb" stroke="#1b2621" stroke-width="2"/>
+            <line x1="164" y1="247.5" x2="180" y2="247.5" stroke="#b3283c" stroke-width="2"/>
+            <text x="78" y="244" font-weight="700">Embankment</text>
+          </g>
+          <g id="pins" font-family="DM Mono, monospace" font-size="13" font-weight="500" text-anchor="middle">
+            <g class="pin" data-i="0" tabindex="0" role="button" aria-label="Stop 1, Southbank Winter Market">
+              <circle class="halo" cx="226" cy="372" r="18" fill="transparent" stroke="transparent"/>
+              <circle class="dot" cx="226" cy="372" r="13" fill="#1b2621"/><text x="226" y="377" fill="#efeadb">1</text></g>
+            <g class="pin" data-i="1" tabindex="0" role="button" aria-label="Stop 2, Somerset House">
+              <circle class="halo" cx="392" cy="222" r="18" fill="transparent" stroke="transparent"/>
+              <circle class="dot" cx="392" cy="222" r="13" fill="#1b2621"/><text x="392" y="227" fill="#efeadb">2</text></g>
+            <g class="pin" data-i="2" tabindex="0" role="button" aria-label="Stop 3, Covent Garden tree">
+              <circle class="halo" cx="300" cy="98" r="18" fill="transparent" stroke="transparent"/>
+              <circle class="dot" cx="300" cy="98" r="13" fill="#1b2621"/><text x="300" y="103" fill="#efeadb">3</text></g>
+            <g class="pin" data-i="3" tabindex="0" role="button" aria-label="Stop 4, Lady of the Grapes">
+              <circle class="halo" cx="262" cy="150" r="18" fill="transparent" stroke="transparent"/>
+              <circle class="dot" cx="262" cy="150" r="13" fill="#1b2621"/><text x="262" y="155" fill="#efeadb">4</text></g>
+            <g class="pin" id="mystery" tabindex="0" role="button" aria-label="A mystery pin">
+              <circle class="halo" cx="206" cy="168" r="18" fill="transparent" stroke="transparent"/>
+              <circle class="dot" cx="206" cy="168" r="13"/>
+              <g class="gift"><rect x="198" y="163" width="16" height="12" rx="1.5" fill="#c8a24c"/><rect x="196" y="159" width="20" height="5" rx="1.5" fill="#c8a24c"/><rect x="204.5" y="159" width="3" height="16" fill="#b3283c"/></g>
+            </g>
+          </g>
+          <g font-family="Karla, sans-serif" font-size="12" fill="#1b2621">
+            <text x="246" y="398">Southbank Winter Market</text>
+            <text x="412" y="226">Somerset House</text>
+            <text x="318" y="96">Covent Garden</text>
+            <text x="282" y="154">Lady of the Grapes</text>
+            <text x="84" y="128" font-family="Gochi Hand, cursive" font-size="16" fill="#b3283c">what's this?</text>
+            <path d="M128 134 C 150 140, 176 150, 192 158" stroke="#b3283c" stroke-width="1.5" fill="none"/>
+          </g>
+        </svg>
+        <figcaption class="mapnote">Tap a pin. Not to scale, much like my confidence.</figcaption>
+      </figure>
+      <div class="detail" id="detail" aria-live="polite" style="margin-top:12px">Tap a pin on the map or a stop below.</div>
+    </div>
+
+    <div>
+      <h3 class="sec">Tasting notes</h3>
+      <ol class="notes-list" id="notes"></ol>
+    </div>
+
+    <div>
+      <h3 class="sec">Dress code</h3>
+      <div class="dresscode">
+        <p class="dc-main">Wear whatever you like.</p>
+        <p class="dc-hand">I'm sure I can give you my scarf if you get cold (reluctantly).</p>
+        <p class="dc-small">Comfy shoes help. There's about 30 minutes of riverside walking, and no skates required.</p>
+      </div>
+    </div>
+
+    <p class="foot">Screenshot this and send it to Ry. That counts as an RSVP.</p>
+    <p class="fine">If it's chucking it down, we skip the Southbank and meet at Somerset House at 8pm instead.</p>
+  </section>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  // ---- the evening. November is GMT, so UTC = London time. ----
+  var START = Date.UTC(2026, 10, 27, 19, 30);
+  var STOPS = [
+    {t:"7:30pm", w:"Embankment, river exit", d:"Up onto the Golden Jubilee footbridge. Best free view in London, I'm told.", pin:null},
+    {t:"7:40pm", w:"Southbank Winter Market", d:"Chalets, lights and something warm. The mulled wine is red, so we're going hot cider or a hot toddy.", pin:0, aside:"one snack, don't fill up"},
+    {t:"8:30pm", w:"Drinks at Somerset House", d:"The Clubhouse overlooks the rink. We watch other people skate and score them out of ten.", pin:1, aside:"I will not be skating"},
+    {t:"9:10pm", w:"The big Covent Garden tree", d:"A quick wander past the tree and the giant bells on the way to wine.", pin:2},
+    {t:"9:20pm", w:"Lady of the Grapes", d:"A tiny French wine bar on Maiden Lane. Natural whites, orange wine, cheese and charcuterie. Table's booked.", pin:3, aside:"white, obviously"}
+  ];
+  var SURPRISE = "<span class='t'>Surprise</span><b>Peckish?</b> There's a proper dinner table on standby round the corner for later on. Say the word and we'll go. Say nothing and it never existed.";
+
+  // ---- the No button that would rather not ----
+  var no = document.getElementById("no"), yes = document.getElementById("yes"), arena = document.getElementById("arena"), quip = document.getElementById("quip");
+  var LINES = ["Are you sure?", "The wine is white though", "Bold.", "Button's a bit broken, sorry", "Try the other one", "It's really not working", "OK fine, have it your way"];
+  var tries = 0, reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function dodge(e){
+    if (e) e.preventDefault();
+    tries++;
+    quip.textContent = LINES[Math.min(tries - 1, LINES.length - 1)];
+    if (tries >= LINES.length) { // give up gracefully
+      no.textContent = "Yes";
+      no.style.left = "50%"; no.style.top = "50%"; no.style.transform = "translate(12%,-50%)";
+      no.onclick = accept; no.onpointerenter = null; no.onpointerdown = null;
+      return;
+    }
+    var w = arena.clientWidth, h = arena.clientHeight, bw = no.offsetWidth, bh = no.offsetHeight;
+    var x = Math.random() * Math.max(0, w - bw), y = Math.random() * Math.max(0, h - bh);
+    no.style.left = x + "px"; no.style.top = y + "px";
+    var s = Math.max(.55, 1 - tries * .08);
+    no.style.transform = "scale(" + s + ")";
+    var g = 1 + tries * .07; yes.style.transform = "translate(-112%,-50%) scale(" + g + ")";
+  }
+  no.onpointerenter = function(e){ if (e.pointerType === "mouse") dodge(); };
+  no.onpointerdown = dodge;
+  no.onclick = function(e){ dodge(e); };
+
+  function accept(){
+    var plan = document.getElementById("plan");
+    document.getElementById("ask").hidden = true;
+    plan.hidden = false;
+    burst();
+    setTimeout(function(){ plan.scrollIntoView({behavior: reduced ? "auto" : "smooth", block:"start"}); }, 60);
+  }
+  yes.onclick = accept;
+
+  // ---- plan: timeline + map ----
+  var list = document.getElementById("notes"), detail = document.getElementById("detail");
+  var pins = Array.prototype.slice.call(document.querySelectorAll(".pin[data-i]"));
+  function show(i){
+    var s = STOPS[i];
+    detail.classList.remove("surprise");
+    detail.innerHTML = "<span class='t'>" + s.t + "</span><b>" + s.w + "</b><br>" + s.d;
+    pins.forEach(function(p){ p.classList.toggle("active", s.pin !== null && +p.dataset.i === s.pin); });
+  }
+  STOPS.forEach(function(s, i){
+    var li = document.createElement("li");
+    li.className = "note"; li.tabIndex = 0; li.setAttribute("role","button");
+    li.innerHTML = "<div class='tm'>" + s.t.replace("pm","") + "</div><div class='bd'><h4>" + s.w + "</h4><p>" + s.d + "</p>" + (s.aside ? "<p class='aside'>" + s.aside + "</p>" : "") + "</div>";
+    li.addEventListener("click", function(){ show(i); });
+    li.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(i); } });
+    list.appendChild(li);
+  });
+  function bindPin(el, fn){
+    el.addEventListener("click", fn);
+    el.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+  }
+  pins.forEach(function(p){
+    bindPin(p, function(){
+      var n = +p.dataset.i;
+      for (var i = 0; i < STOPS.length; i++) if (STOPS[i].pin === n) { show(i); return; }
+    });
+  });
+  var mystery = document.getElementById("mystery");
+  bindPin(mystery, function(){
+    mystery.classList.add("found");
+    pins.forEach(function(p){ p.classList.remove("active"); });
+    detail.classList.add("surprise");
+    detail.innerHTML = SURPRISE;
+    burst();
+  });
+
+  // ---- countdown ----
+  function pad(n){ return String(n).padStart(2, "0"); }
+  function tick(){
+    var ms = Math.max(0, START - Date.now());
+    document.getElementById("cd").textContent = Math.floor(ms / 864e5);
+    document.getElementById("ch").textContent = pad(Math.floor(ms % 864e5 / 36e5));
+    document.getElementById("cm").textContent = pad(Math.floor(ms % 36e5 / 6e4));
+    document.getElementById("cs").textContent = pad(Math.floor(ms % 6e4 / 1e3));
+  }
+  tick(); setInterval(tick, 1000);
+
+  // ---- snow always; hearts and gold sparks on yes ----
+  var c = document.getElementById("fx"), x = c.getContext("2d"), W = 0, H = 0, dpr = window.devicePixelRatio || 1, parts = [];
+  function size(){ W = c.width = innerWidth * dpr; H = c.height = innerHeight * dpr; c.style.width = innerWidth + "px"; c.style.height = innerHeight + "px"; }
+  size(); addEventListener("resize", size);
+  function snow(n){ for (var i = 0; i < n; i++) parts.push({k:"s", x:Math.random(), y:Math.random(), r:Math.random()*2.2+.7, v:Math.random()*.0009+.0004, d:Math.random()*6.28}); }
+  function burst(){
+    if (reduced) return;
+    for (var i = 0; i < 70; i++) parts.push({k: i % 3 ? "h" : "g", x:.5 + (Math.random()-.5)*.5, y:1.05 + Math.random()*.25, r: i % 3 ? Math.random()*7+6 : Math.random()*2+1.2, v:Math.random()*.005+.004, d:Math.random()*6.28, c: i % 2 ? "#c22a40" : "#c8a24c"});
+  }
+  function heart(cx, cy, s, col){
+    x.save(); x.translate(cx, cy); x.scale(s/16, s/16); x.beginPath();
+    x.moveTo(0, 5); x.bezierCurveTo(-14, -5, -6, -16, 0, -8); x.bezierCurveTo(6, -16, 14, -5, 0, 5);
+    x.fillStyle = col; x.globalAlpha = .85; x.fill(); x.restore();
+  }
+  if (!reduced) {
+    snow(70);
+    (function loop(){
+      x.clearRect(0, 0, W, H);
+      for (var i = parts.length - 1; i >= 0; i--) {
+        var p = parts[i]; p.d += .02;
+        if (p.k === "s") {
+          p.y += p.v; if (p.y > 1.02) { p.y = -.02; p.x = Math.random(); }
+          x.beginPath(); x.arc((p.x + Math.sin(p.d)*.008)*W, p.y*H, p.r*dpr, 0, 6.2832); x.fillStyle = "rgba(244,239,226,.55)"; x.fill();
+        } else {
+          p.y -= p.v; if (p.y < -.05) { parts.splice(i, 1); continue; }
+          var px = (p.x + Math.sin(p.d)*.02)*W, py = p.y*H;
+          if (p.k === "h") heart(px, py, p.r*dpr, p.c);
+          else { x.beginPath(); x.arc(px, py, p.r*dpr, 0, 6.2832); x.fillStyle = "rgba(255,207,134,.9)"; x.fill(); }
+        }
+      }
+      requestAnimationFrame(loop);
+    })();
+  }
+})();
+</script>
+
+</body></html>
