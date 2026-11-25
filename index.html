@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Karla:wght@400;500;700&family=Gochi+Hand&family=DM+Mono:wght@400;500&display=swap">
 <style>
+html{overflow-x:clip}
 /* Layout: a single wine label hung under a string of fairy lights on a candlelit winter-night ground. The label asks the question; saying yes peels back to the tasting notes (the plan) and a map with one hidden pin. Deliberately single dark theme. */
 :root{
   --cellar:#0e1f1a;      /* bottle-green night */
@@ -117,10 +118,12 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
 .pin:focus{outline:none}
 .pin:focus-visible circle.halo,.pin:hover circle.halo{stroke:var(--holly);stroke-width:3}
 .pin.active circle.dot{fill:var(--holly)}
-#mystery .dot{fill:var(--ink)}
-#mystery.found .dot{fill:var(--holly)}
 @keyframes wob{0%,100%{transform:rotate(0)}20%{transform:rotate(-10deg)}40%{transform:rotate(9deg)}60%{transform:rotate(-6deg)}}
-#mystery .gift{transform-box:fill-box;transform-origin:50% 100%;animation:wob 2.6s ease-in-out infinite}
+.giftbtn{display:inline-flex;align-items:center;gap:8px;margin-top:6px;border:1px dashed var(--foil);border-radius:999px;padding:6px 14px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--foil)}
+.giftbtn svg{transform-origin:50% 100%;animation:wob 2.6s ease-in-out infinite}
+.giftin{display:none}
+.note.opened .giftin{display:block}
+.note.opened .giftbtn{display:none}
 .mapnote{font-family:var(--hand);font-size:19px;color:var(--ink);text-align:center;margin:4px 0 2px}
 .detail{background:rgba(231,239,233,.06);border:1px solid rgba(231,239,233,.14);border-radius:12px;padding:14px 16px;min-height:84px}
 .detail b{color:var(--foil)}
@@ -169,7 +172,7 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
   padding:4px 8px;font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
 .yay-close{font:500 15px/1 var(--body);background:transparent;color:var(--frost);border:1px solid rgba(231,239,233,.4);border-radius:999px;padding:12px 22px;cursor:pointer}
 @media (max-width:420px){.specs b{font-size:15px}.note{grid-template-columns:50px 1fr;gap:10px}}
-@media (prefers-reduced-motion:reduce){#mystery .gift{animation:none}#no{transition:none}.lights .b{animation:none}}
+@media (prefers-reduced-motion:reduce){.giftbtn svg{animation:none}#no{transition:none}.lights .b{animation:none}}
 </style>
 
 <canvas id="fx" aria-hidden="true"></canvas>
@@ -263,14 +266,14 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
         <p><b>Get off at Waterloo</b> and follow the signs for the Southbank Centre. It's about a 5 minute walk.</p>
         <p><b>Meet at the Southbank Winter Market, 7pm,</b> at the Royal Festival Hall end. I'll be the one by the chalets looking suspiciously organised.</p>
         <p>The Tube strike ends Friday lunchtime and it should be running normally by the evening. Worth a glance at TfL before you leave.</p>
-        <p><b>Getting you home:</b> Leicester Square is about 5 minutes from the tree. Northern line southbound, 8 stops straight to Clapham Common, about 15 minutes with no change. The Night Tube runs on Fridays, so no Cinderella dash. I'll walk you to the station, obviously.</p>
+        <p><b>Getting you home:</b> we'll finish up somewhere central, and it's the Northern line straight back to Clapham Common, about 15 minutes with no change. The Night Tube runs on Fridays, so no Cinderella dash. I'll walk you to the station, obviously.</p>
       </div>
     </div>
 
     <div>
       <h3 class="sec">The map</h3>
       <figure class="map" style="margin:0">
-        <svg id="mapsvg" viewBox="0 0 600 420" role="group" aria-label="Walking map from Waterloo station to the Southbank, Somerset House, Covent Garden and a nightcap. Tap a pin.">
+        <svg id="mapsvg" viewBox="0 0 600 420" role="group" aria-label="Walking map from Waterloo station to the Southbank, Somerset House, Covent Garden. Tap a pin.">
           <rect x="0" y="0" width="600" height="420" fill="#efeadb"/>
           <path d="M0 300 C 150 285, 260 300, 360 290 S 520 250, 600 238 L 600 300 C 520 312, 440 345, 360 350 S 150 350, 0 362 Z" fill="#c9d7d6" stroke="#9fb6b5" stroke-width="1.5"/>
           <text x="470" y="296" font-family="DM Mono, monospace" font-size="11" fill="#5d7271" letter-spacing="3">RIVER THAMES</text>
@@ -281,7 +284,7 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
           <text x="104" y="331" font-family="Karla, sans-serif" font-size="11" fill="#7b735f">footbridge</text>
           <line x1="372" y1="245" x2="380" y2="352" stroke="#8d8672" stroke-width="5" stroke-linecap="round"/>
           <text x="390" y="320" font-family="Karla, sans-serif" font-size="11" fill="#7b735f">Waterloo Bridge</text>
-          <path d="M162 400 L 200 384 L 226 372 L 250 372 L 340 366 L 378 352 L 374 300 L 372 245 L 392 222 M 392 222 L 350 160 L 300 98 M 300 98 L 262 148" fill="none" stroke="#b3283c" stroke-width="3" stroke-dasharray="7 6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M162 400 L 200 384 L 226 372 L 250 372 L 340 366 L 378 352 L 374 300 L 372 245 L 392 222 M 392 222 L 350 160 L 300 98" fill="none" stroke="#b3283c" stroke-width="3" stroke-dasharray="7 6" stroke-linecap="round" stroke-linejoin="round"/>
           <g font-family="Karla, sans-serif" font-size="12" fill="#1b2621">
             <rect x="138" y="394" width="24" height="15" rx="7.5" fill="#efeadb" stroke="#1b2621" stroke-width="2"/>
             <line x1="142" y1="401.5" x2="158" y2="401.5" stroke="#b3283c" stroke-width="2"/>
@@ -297,22 +300,11 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
             <g class="pin" data-i="2" tabindex="0" role="button" aria-label="Stop 3, Covent Garden tree">
               <circle class="halo" cx="300" cy="98" r="18" fill="transparent" stroke="transparent"/>
               <circle class="dot" cx="300" cy="98" r="13" fill="#1b2621"/><text x="300" y="103" fill="#efeadb">3</text></g>
-            <g class="pin" data-i="3" tabindex="0" role="button" aria-label="Stop 4, Nightcaps">
-              <circle class="halo" cx="262" cy="150" r="18" fill="transparent" stroke="transparent"/>
-              <circle class="dot" cx="262" cy="150" r="13" fill="#1b2621"/><text x="262" y="155" fill="#efeadb">4</text></g>
-            <g class="pin" id="mystery" tabindex="0" role="button" aria-label="A mystery pin">
-              <circle class="halo" cx="206" cy="168" r="18" fill="transparent" stroke="transparent"/>
-              <circle class="dot" cx="206" cy="168" r="13"/>
-              <g class="gift"><rect x="198" y="163" width="16" height="12" rx="1.5" fill="#c8a24c"/><rect x="196" y="159" width="20" height="5" rx="1.5" fill="#c8a24c"/><rect x="204.5" y="159" width="3" height="16" fill="#b3283c"/></g>
-            </g>
           </g>
           <g font-family="Karla, sans-serif" font-size="12" fill="#1b2621">
             <text x="246" y="398">Southbank Winter Market</text>
             <text x="412" y="226">Somerset House</text>
             <text x="318" y="96">Covent Garden</text>
-            <text x="282" y="154">Nightcaps</text>
-            <text x="84" y="128" font-family="Gochi Hand, cursive" font-size="16" fill="#b3283c">what's this?</text>
-            <path d="M128 134 C 150 140, 176 150, 192 158" stroke="#b3283c" stroke-width="1.5" fill="none"/>
           </g>
         </svg>
         <figcaption class="mapnote">Tap a pin. Not to scale, much like my confidence.</figcaption>
@@ -366,12 +358,13 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
   var START = Date.UTC(2026, 10, 27, 19, 0);
   var STOPS = [
     {t:"7:00pm", w:"Southbank Winter Market", d:"Meet by the chalets at the Royal Festival Hall end. Lights, a mooch and something warm. Our mission: find out once and for all whether mulled white wine exists. If not, hot cider.", pin:0},
-    {t:"8:00pm", w:"A stroll over Waterloo Bridge", d:"Best view in London, both directions, and it's free. No rush.", pin:null},
-    {t:"8:15pm", w:"Drinks at Somerset House", d:"The Clubhouse overlooks the rink. We sip something white and watch strangers stack it on the ice, fake-laughing at each other's jokes while we score every wipeout out of ten.", pin:1, aside:"I will not be skating. I will not be stacking it."},
-    {t:"9:15pm", w:"The big Covent Garden tree", d:"A wander past the tree and the giant bells. Photo optional, but strongly encouraged.", pin:2},
-    {t:"9:30pm", w:"Your call: nightcaps or dinner?", d:"<b>Option A:</b> A Covent Garden nightcap crawl. The Punch &amp; Judy balcony over the piazza if we can nab it (or its cellar bar if not), then Mr Fogg's Tavern round the corner if we fancy somewhere more bonkers. No bookings, we just follow our noses.<br><b>Option B:</b> If you're starving, we swap it for a surprise dinner. Location classified. There's a clue on the map.", pin:3, aside:"white, obviously"}
+    {t:"7:45pm", w:"A stroll over Waterloo Bridge", d:"Best view in London, both directions, and it's free. No rush.", pin:null},
+    {t:"8:00pm", w:"Drinks at Somerset House", d:"The Clubhouse overlooks the rink. We sip something white and watch strangers stack it on the ice, fake-laughing at each other's jokes while we score every wipeout out of ten.", pin:1, aside:"I will not be skating. I will not be stacking it."},
+    {t:"8:45pm", w:"The big Covent Garden tree", d:"A wander past the tree and the giant bells. Photo optional, but strongly encouraged.", pin:2},
+    {t:"9:00pm", w:"Then we wing it\u2026", d:"(I may have a trick or two up my sleeve.)", pin:null, gift:true}
   ];
-  var SURPRISE = "<span class='t'>Surprise</span><b>Peckish?</b> Sadly Spoons wouldn't move Curry Club to Friday for us, despite my best efforts. Luckily I've got a proper dinner spot up my sleeve round the corner. Say the word at 9:30 and we'll go eat instead of the bar crawl. Where? That's the surprise.";
+  var SURPRISE = "<span class='t'>9:00pm \u00b7 Unwrapped</span><b>Hungry? Sorted. Not hungry? Also sorted.</b><br>Sadly Spoons wouldn't move Curry Club to Friday for us, despite my best efforts. But whichever way your stomach votes, I've got something up my sleeve. Where? That's the surprise.";
+  var GIFT = "<span class='giftbtn'><svg width='16' height='16' viewBox='0 0 20 20' aria-hidden='true'><rect x='2' y='8' width='16' height='10' rx='1.5' fill='#c8a24c'/><rect x='1' y='5' width='18' height='4' rx='1.5' fill='#c8a24c'/><rect x='8.5' y='5' width='3' height='13' fill='#b3283c'/></svg>Tap to open</span><p class='giftin'><b>Hungry? Sorted. Not hungry? Also sorted.</b> Where? That's the surprise.</p>";
 
   // ---- the No button that would rather not ----
   var no = document.getElementById("no"), yes = document.getElementById("yes"), arena = document.getElementById("arena"), quip = document.getElementById("quip");
@@ -427,6 +420,7 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
   var pins = Array.prototype.slice.call(document.querySelectorAll(".pin[data-i]"));
   function show(i){
     var s = STOPS[i];
+    if (s.gift) { openGift(i); return; }
     detail.classList.remove("surprise");
     detail.innerHTML = "<span class='t'>" + s.t + "</span><b>" + s.w + "</b><br>" + s.d;
     pins.forEach(function(p){ p.classList.toggle("active", s.pin !== null && +p.dataset.i === s.pin); });
@@ -434,7 +428,8 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
   STOPS.forEach(function(s, i){
     var li = document.createElement("li");
     li.className = "note"; li.tabIndex = 0; li.setAttribute("role","button");
-    li.innerHTML = "<div class='tm'>" + s.t.replace("pm","") + "</div><div class='bd'><h4>" + s.w + "</h4><p>" + s.d + "</p>" + (s.aside ? "<p class='aside'>" + s.aside + "</p>" : "") + "</div>";
+    li.innerHTML = "<div class='tm'>" + s.t.replace("pm","") + "</div><div class='bd'><h4>" + s.w + "</h4><p>" + s.d + "</p>" + (s.gift ? GIFT : "") + (s.aside ? "<p class='aside'>" + s.aside + "</p>" : "") + "</div>";
+    if (s.gift) li.setAttribute("aria-label", s.w + " Tap to open the surprise.");
     li.addEventListener("click", function(){ show(i); });
     li.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(i); } });
     list.appendChild(li);
@@ -449,14 +444,15 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
       for (var i = 0; i < STOPS.length; i++) if (STOPS[i].pin === n) { show(i); return; }
     });
   });
-  var mystery = document.getElementById("mystery");
-  bindPin(mystery, function(){
-    mystery.classList.add("found");
+  function openGift(i){
+    var li = list.children[i];
+    var first = !li.classList.contains("opened");
+    li.classList.add("opened");
     pins.forEach(function(p){ p.classList.remove("active"); });
     detail.classList.add("surprise");
     detail.innerHTML = SURPRISE;
-    burst();
-  });
+    if (first) burst();
+  }
 
   // ---- countdown ----
   function pad(n){ return String(n).padStart(2, "0"); }
