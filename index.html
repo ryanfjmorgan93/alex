@@ -13,6 +13,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Karla:wght@400;500;700&family=Gochi+Hand&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
 html{overflow-x:clip}
 /* Layout: a single wine label hung under a string of fairy lights on a candlelit winter-night ground. The label asks the question; saying yes peels back to the tasting notes (the plan) and a map with one hidden pin. Deliberately single dark theme. */
@@ -113,13 +115,27 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
 
 /* map */
 .map{background:var(--paper);border-radius:10px;padding:8px;position:relative}
-.map svg{display:block;width:100%;height:auto;max-width:100%}
+
 .pin{cursor:pointer}
 .pin:focus{outline:none}
 .pin:focus-visible circle.halo,.pin:hover circle.halo{stroke:var(--holly);stroke-width:3}
 .pin.active circle.dot{fill:var(--holly)}
 @keyframes wob{0%,100%{transform:rotate(0)}20%{transform:rotate(-10deg)}40%{transform:rotate(9deg)}60%{transform:rotate(-6deg)}}
-.giftbtn{display:inline-flex;align-items:center;gap:8px;margin-top:6px;border:1px dashed var(--foil);border-radius:999px;padding:6px 14px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--foil)}
+.giftbtn{display:inline-flex;align-items:center;gap:10px;margin-top:10px;border:2px solid var(--foil);background:rgba(200,162,76,.16);border-radius:999px;padding:11px 20px;font-family:var(--mono);font-size:15px;font-weight:500;letter-spacing:.04em;color:var(--foil);animation:glow 2s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(200,162,76,.45)}50%{box-shadow:0 0 0 8px rgba(200,162,76,0)}}
+#leafmap{height:360px;border-radius:8px;background:#e8e4d8;z-index:0}
+.leaflet-container{font-family:Karla,sans-serif}
+.lpin{width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--paper);border:2px solid var(--paper);box-shadow:0 2px 6px rgba(0,0,0,.35);display:grid;place-items:center;font:500 14px "DM Mono",monospace;cursor:pointer;transition:transform .15s}
+.lpin.active{background:var(--holly);transform:scale(1.15)}
+.lpin:focus-visible{outline:3px solid var(--foil)}
+.llabel{position:absolute;left:36px;top:5px;white-space:nowrap;background:rgba(239,234,219,.92);color:var(--ink);font:700 12px Karla,sans-serif;padding:2px 7px;border-radius:4px;pointer-events:none}
+.lstation{width:26px;height:16px;border-radius:8px;background:#fff;border:3px solid #dc241f;position:relative}
+.lstation:after{content:"";position:absolute;left:-6px;right:-6px;top:3px;height:4px;background:#0019a8}
+.lgift{width:44px;height:44px;border-radius:50%;background:var(--holly);border:3px solid var(--paper);box-shadow:0 0 0 0 rgba(194,42,64,.6);display:grid;place-items:center;cursor:pointer;animation:gpulse 1.8s ease-in-out infinite}
+.lgift svg{animation:wob 2.6s ease-in-out infinite;transform-origin:50% 100%}
+.lgift.found{animation:none}
+@keyframes gpulse{0%,100%{box-shadow:0 0 0 0 rgba(194,42,64,.55)}50%{box-shadow:0 0 0 12px rgba(194,42,64,0)}}
+.ltap{position:absolute;left:48px;top:9px;white-space:nowrap;background:var(--holly);color:#fff;font:400 18px "Gochi Hand",cursive;padding:1px 9px;border-radius:6px;pointer-events:none;transform:rotate(-4deg)}
 .giftbtn svg{transform-origin:50% 100%;animation:wob 2.6s ease-in-out infinite}
 .giftin{display:none}
 .note.opened .giftin{display:block}
@@ -172,7 +188,7 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
   padding:4px 8px;font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
 .yay-close{font:500 15px/1 var(--body);background:transparent;color:var(--frost);border:1px solid rgba(231,239,233,.4);border-radius:999px;padding:12px 22px;cursor:pointer}
 @media (max-width:420px){.specs b{font-size:15px}.note{grid-template-columns:50px 1fr;gap:10px}}
-@media (prefers-reduced-motion:reduce){.giftbtn svg{animation:none}#no{transition:none}.lights .b{animation:none}}
+@media (prefers-reduced-motion:reduce){.giftbtn,.giftbtn svg,.lgift,.lgift svg{animation:none}#no{transition:none}.lights .b{animation:none}}
 </style>
 
 <canvas id="fx" aria-hidden="true"></canvas>
@@ -266,55 +282,44 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
         <p><b>Get off at Waterloo</b> and follow the signs for the Southbank Centre. It's about a 5 minute walk.</p>
         <p><b>Meet at the Southbank Winter Market, 7pm,</b> at the Royal Festival Hall end. I'll be the one by the chalets looking suspiciously organised.</p>
         <p>The Tube strike ends Friday lunchtime and it should be running normally by the evening. Worth a glance at TfL before you leave.</p>
-        <p><b>Getting you home:</b> we'll finish up somewhere central, and it's the Northern line straight back to Clapham Common, about 15 minutes with no change. The Night Tube runs on Fridays, so no Cinderella dash. I'll walk you to the station, obviously.</p>
       </div>
     </div>
 
     <div>
       <h3 class="sec">The map</h3>
       <figure class="map" style="margin:0">
-        <svg id="mapsvg" viewBox="0 0 600 420" role="group" aria-label="Walking map from Waterloo station to the Southbank, Somerset House, Covent Garden. Tap a pin.">
-          <rect x="0" y="0" width="600" height="420" fill="#efeadb"/>
-          <path d="M0 300 C 150 285, 260 300, 360 290 S 520 250, 600 238 L 600 300 C 520 312, 440 345, 360 350 S 150 350, 0 362 Z" fill="#c9d7d6" stroke="#9fb6b5" stroke-width="1.5"/>
-          <text x="470" y="296" font-family="DM Mono, monospace" font-size="11" fill="#5d7271" letter-spacing="3">RIVER THAMES</text>
-          <path d="M100 214 L 540 190" stroke="#d8d0bb" stroke-width="8" stroke-linecap="round" fill="none"/>
-          <text x="470" y="182" font-family="Karla, sans-serif" font-size="11" fill="#7b735f">Strand</text>
-          <line x1="178" y1="262" x2="196" y2="352" stroke="#8d8672" stroke-width="5" stroke-linecap="round"/>
-          <text x="80" y="318" font-family="Karla, sans-serif" font-size="11" fill="#7b735f">Golden Jubilee</text>
-          <text x="104" y="331" font-family="Karla, sans-serif" font-size="11" fill="#7b735f">footbridge</text>
-          <line x1="372" y1="245" x2="380" y2="352" stroke="#8d8672" stroke-width="5" stroke-linecap="round"/>
-          <text x="390" y="320" font-family="Karla, sans-serif" font-size="11" fill="#7b735f">Waterloo Bridge</text>
-          <path d="M162 400 L 200 384 L 226 372 L 250 372 L 340 366 L 378 352 L 374 300 L 372 245 L 392 222 M 392 222 L 350 160 L 300 98" fill="none" stroke="#b3283c" stroke-width="3" stroke-dasharray="7 6" stroke-linecap="round" stroke-linejoin="round"/>
-          <g font-family="Karla, sans-serif" font-size="12" fill="#1b2621">
-            <rect x="138" y="394" width="24" height="15" rx="7.5" fill="#efeadb" stroke="#1b2621" stroke-width="2"/>
-            <line x1="142" y1="401.5" x2="158" y2="401.5" stroke="#b3283c" stroke-width="2"/>
-            <text x="74" y="406" font-weight="700">Waterloo</text>
-          </g>
-          <g id="pins" font-family="DM Mono, monospace" font-size="13" font-weight="500" text-anchor="middle">
-            <g class="pin" data-i="0" tabindex="0" role="button" aria-label="Stop 1, Southbank Winter Market">
-              <circle class="halo" cx="226" cy="372" r="18" fill="transparent" stroke="transparent"/>
-              <circle class="dot" cx="226" cy="372" r="13" fill="#1b2621"/><text x="226" y="377" fill="#efeadb">1</text></g>
-            <g class="pin" data-i="1" tabindex="0" role="button" aria-label="Stop 2, Somerset House">
-              <circle class="halo" cx="392" cy="222" r="18" fill="transparent" stroke="transparent"/>
-              <circle class="dot" cx="392" cy="222" r="13" fill="#1b2621"/><text x="392" y="227" fill="#efeadb">2</text></g>
-            <g class="pin" data-i="2" tabindex="0" role="button" aria-label="Stop 3, Covent Garden tree">
-              <circle class="halo" cx="300" cy="98" r="18" fill="transparent" stroke="transparent"/>
-              <circle class="dot" cx="300" cy="98" r="13" fill="#1b2621"/><text x="300" y="103" fill="#efeadb">3</text></g>
-          </g>
-          <g font-family="Karla, sans-serif" font-size="12" fill="#1b2621">
-            <text x="246" y="398">Southbank Winter Market</text>
-            <text x="412" y="226">Somerset House</text>
-            <text x="318" y="96">Covent Garden</text>
-          </g>
-        </svg>
-        <figcaption class="mapnote">Tap a pin. Not to scale, much like my confidence.</figcaption>
+        <div id="leafmap" role="group" aria-label="Street map of the walk from Waterloo station past the Southbank Winter Market, over Waterloo Bridge to Somerset House and Covent Garden. Tap a pin, and the present."></div>
+        <figcaption class="mapnote">Tap a pin. And definitely tap the present.</figcaption>
       </figure>
-      <div class="detail" id="detail" aria-live="polite" style="margin-top:12px">Tap a pin on the map or a stop below.</div>
+      <div class="detail" id="detail" aria-live="polite" style="margin-top:12px">Tap a pin on the map, or a stop below.</div>
     </div>
 
     <div>
       <h3 class="sec">Tasting notes</h3>
       <ol class="notes-list" id="notes"></ol>
+    </div>
+
+    <div>
+      <h3 class="sec">Getting you home</h3>
+      <div class="route homeroute">
+        <div class="line-wrap">
+          <p class="linecap">Northern line · southbound · about 15 min</p>
+          <svg class="line-svg" viewBox="0 0 640 110" role="img" aria-label="Northern line southbound from central London straight to Clapham Common, no change, about fifteen minutes">
+            <line x1="40" y1="50" x2="600" y2="50" stroke="#e7efe9" stroke-width="9" stroke-linecap="round"/>
+            <g font-family="Karla, sans-serif" font-size="21" fill="#e7efe9" text-anchor="middle">
+              <circle cx="40" cy="50" r="15" fill="#c8a24c" stroke="#e7efe9" stroke-width="4"/>
+              <text x="40" y="98" font-weight="700" text-anchor="start" dx="-24">Central London</text>
+              <circle cx="180" cy="50" r="8" fill="#0e1f1a" stroke="#e7efe9" stroke-width="4"/>
+              <circle cx="320" cy="50" r="8" fill="#0e1f1a" stroke="#e7efe9" stroke-width="4"/>
+              <circle cx="460" cy="50" r="8" fill="#0e1f1a" stroke="#e7efe9" stroke-width="4"/>
+              <circle cx="600" cy="50" r="15" fill="#c8a24c" stroke="#e7efe9" stroke-width="4"/>
+              <text x="600" y="98" font-weight="700" text-anchor="end" dx="22">Clapham Common</text>
+            </g>
+          </svg>
+        </div>
+        <p><b>Straight home, no change.</b> We'll finish up somewhere central, and I'll walk you to the nearest Northern line station (Leicester Square or Embankment, depending on where the night takes us). Any southbound train to Morden runs straight to Clapham Common, about 15 minutes.</p>
+        <p><b>No Cinderella dash.</b> The Night Tube runs on Fridays, so the last train isn't a deadline. If the Tube's sulking after the strike, I'll sort you a cab.</p>
+      </div>
     </div>
 
     <div>
@@ -364,7 +369,7 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
     {t:"9:00pm", w:"Then we wing it\u2026", d:"(I may have a trick or two up my sleeve.)", pin:null, gift:true}
   ];
   var SURPRISE = "<span class='t'>9:00pm \u00b7 Unwrapped</span><b>Hungry? Sorted. Not hungry? Also sorted.</b><br>Sadly Spoons wouldn't move Curry Club to Friday for us, despite my best efforts. But whichever way your stomach votes, I've got something up my sleeve. Where? That's the surprise.";
-  var GIFT = "<span class='giftbtn'><svg width='16' height='16' viewBox='0 0 20 20' aria-hidden='true'><rect x='2' y='8' width='16' height='10' rx='1.5' fill='#c8a24c'/><rect x='1' y='5' width='18' height='4' rx='1.5' fill='#c8a24c'/><rect x='8.5' y='5' width='3' height='13' fill='#b3283c'/></svg>Tap to open</span><p class='giftin'><b>Hungry? Sorted. Not hungry? Also sorted.</b> Where? That's the surprise.</p>";
+  var GIFT = "<span class='giftbtn'><svg width='22' height='22' viewBox='0 0 20 20' aria-hidden='true'><rect x='2' y='8' width='16' height='10' rx='1.5' fill='#c8a24c'/><rect x='1' y='5' width='18' height='4' rx='1.5' fill='#c8a24c'/><rect x='8.5' y='5' width='3' height='13' fill='#b3283c'/></svg>Tap to unwrap</span><p class='giftin'><b>Hungry? Sorted. Not hungry? Also sorted.</b> Where? That's the surprise.</p>";
 
   // ---- the No button that would rather not ----
   var no = document.getElementById("no"), yes = document.getElementById("yes"), arena = document.getElementById("arena"), quip = document.getElementById("quip");
@@ -417,7 +422,30 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
 
   // ---- plan: timeline + map ----
   var list = document.getElementById("notes"), detail = document.getElementById("detail");
-  var pins = Array.prototype.slice.call(document.querySelectorAll(".pin[data-i]"));
+  var pins = [], giftEl = null, theMap = null;
+  (function(){
+    var el = document.getElementById("leafmap");
+    if (!window.L || !el) { if (el) el.innerHTML = "<p style='padding:16px;color:#1b2621'>Map didn't load. The plan's below.</p>"; return; }
+    var map = L.map(el, {scrollWheelZoom:false, zoomSnap:0.25, dragging:!L.Browser.mobile, tap:true, zoomControl:true, attributionControl:true});
+    theMap = map;
+    map.setView([51.5085,-0.1185], 15);
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {maxZoom:19, subdomains:"abcd", attribution:"&copy; OpenStreetMap contributors &copy; CARTO"}).addTo(map);
+    var route = [[51.5033,-0.1135],[51.5043,-0.1149],[51.5052,-0.1161],[51.5060,-0.1172],[51.5066,-0.1162],[51.5070,-0.1152],[51.5099,-0.1180],[51.5106,-0.1185],[51.5109,-0.1174],[51.5106,-0.1185],[51.5114,-0.1192],[51.5119,-0.1197],[51.5121,-0.1212],[51.5120,-0.1226]];
+    L.polyline(route, {color:"#ffffff", weight:8, opacity:.9}).addTo(map);
+    L.polyline(route, {color:"#c22a40", weight:4, dashArray:"8 8"}).addTo(map);
+    L.marker([51.5033,-0.1135], {icon:L.divIcon({className:"", html:"<div class='lstation'></div><span class='llabel' style='left:32px;top:-2px'>Waterloo</span>", iconSize:[26,16], iconAnchor:[13,8]}), keyboard:false, interactive:false}).addTo(map);
+    var P = [{n:0, ll:[51.5060,-0.1172], lab:"Winter Market"},{n:1, ll:[51.5109,-0.1174], lab:"Somerset House"},{n:2, ll:[51.5120,-0.1226], lab:"Covent Garden tree"}];
+    P.forEach(function(p){
+      var m = L.marker(p.ll, {icon:L.divIcon({className:"", html:"<div class='lpin' tabindex='0' role='button' aria-label='Stop " + (p.n+1) + ", " + p.lab + "'>" + (p.n+1) + "</div><span class='llabel'>" + p.lab + "</span>", iconSize:[30,30], iconAnchor:[15,15]}), keyboard:false}).addTo(map);
+      var d = m.getElement().querySelector(".lpin"); d.dataset.i = p.n; pins.push(d);
+    });
+    var g = L.marker([51.5138,-0.1222], {icon:L.divIcon({className:"", html:"<div class='lgift' tabindex='0' role='button' aria-label='A present. Tap to unwrap.'><svg width='24' height='24' viewBox='0 0 20 20' aria-hidden='true'><rect x='2' y='8' width='16' height='10' rx='1.5' fill='#efeadb'/><rect x='1' y='5' width='18' height='4' rx='1.5' fill='#efeadb'/><rect x='8.5' y='5' width='3' height='13' fill='#c8a24c'/></svg></div><span class='ltap'>tap me!</span>", iconSize:[44,44], iconAnchor:[22,22]}), keyboard:false}).addTo(map);
+    giftEl = g.getElement().querySelector(".lgift");
+    var B = L.latLngBounds(route.concat([[51.5138,-0.1222]])), fitted = false;
+    function refit(){ if (el.clientWidth > 0) { map.invalidateSize(); if (!fitted) { map.fitBounds(B, {padding:[34,34]}); fitted = true; } } }
+    refit();
+    if (window.ResizeObserver) new ResizeObserver(refit).observe(el); else addEventListener("resize", refit);
+  })();
   function show(i){
     var s = STOPS[i];
     if (s.gift) { openGift(i); return; }
@@ -444,8 +472,10 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
       for (var i = 0; i < STOPS.length; i++) if (STOPS[i].pin === n) { show(i); return; }
     });
   });
+  if (giftEl) bindPin(giftEl, function(){ openGift(4); });
   function openGift(i){
     var li = list.children[i];
+    if (giftEl) { giftEl.classList.add("found"); var t = giftEl.parentNode.querySelector(".ltap"); if (t) t.textContent = "unwrapped!"; }
     var first = !li.classList.contains("opened");
     li.classList.add("opened");
     pins.forEach(function(p){ p.classList.remove("active"); });
