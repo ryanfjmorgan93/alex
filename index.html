@@ -210,42 +210,6 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
     <div class="cheers">
       <h2>Excellent choice.</h2>
       <p>Very mature. Here's the plan.</p>
-      <p class="cheers-sub">Yes, it starts at 7. That's practically past both our bedtimes. We'll power through.</p>
-    </div>
-
-    <div>
-      <div class="count" aria-live="off">
-        <div><b id="cd">--</b><span>days</span></div>
-        <div><b id="ch">--</b><span>hrs</span></div>
-        <div><b id="cm">--</b><span>mins</span></div>
-        <div><b id="cs">--</b><span>secs</span></div>
-      </div>
-    </div>
-
-    <div>
-      <h3 class="sec">Getting there</h3>
-      <div class="route">
-        <div class="line-wrap">
-          <p class="linecap">Northern line · northbound · about 12 min</p>
-          <svg class="line-svg" viewBox="0 0 640 150" role="img" aria-label="Northern line northbound, Clapham Common to Waterloo, five stops, about twelve minutes">
-            <line x1="40" y1="75" x2="600" y2="75" stroke="#e7efe9" stroke-width="9" stroke-linecap="round"/>
-            <g font-family="Karla, sans-serif" font-size="21" fill="#e7efe9" text-anchor="middle">
-              <circle cx="40" cy="75" r="15" fill="#c8a24c" stroke="#e7efe9" stroke-width="4"/>
-              <text x="58" y="122" font-weight="700" text-anchor="start" dx="-34">Clapham Common</text>
-              <circle cx="152" cy="75" r="8" fill="#0e1f1a" stroke="#e7efe9" stroke-width="4"/><text x="152" y="40">Clapham N</text>
-              <circle cx="264" cy="75" r="8" fill="#0e1f1a" stroke="#e7efe9" stroke-width="4"/>
-              <circle cx="376" cy="75" r="8" fill="#0e1f1a" stroke="#e7efe9" stroke-width="4"/><text x="376" y="40">Oval</text>
-              <circle cx="488" cy="75" r="10" fill="#0e1f1a" stroke="#c8a24c" stroke-width="4"/><text x="488" y="122" fill="#c8a24c">Kennington</text>
-              <circle cx="600" cy="75" r="15" fill="#c8a24c" stroke="#e7efe9" stroke-width="4"/>
-              <text x="600" y="40" font-weight="700" text-anchor="end" dx="22">Waterloo</text>
-            </g>
-          </svg>
-        </div>
-        <p><b>Northern line, no change.</b> Hop on a train marked <b>"via Charing Cross"</b>. If a "via Bank" one turns up first, ride it to Kennington and swap across the platform.</p>
-        <p><b>Get off at Waterloo</b> and follow the signs for the Southbank Centre. It's about a 5 minute walk.</p>
-        <p><b>Meet at the Southbank Winter Market, 7pm,</b> at the Royal Festival Hall end. I'll be the one by the chalets looking suspiciously organised.</p>
-        <p>The Tube strike ends Friday lunchtime and it should be running normally by the evening. Worth a glance at TfL before you leave.</p>
-      </div>
     </div>
 
     <div>
@@ -285,28 +249,7 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
       </div>
     </div>
 
-    <div class="rsvp-wrap">
-      <button class="btn" id="rsvp" type="button">RSVP</button>
-      <p class="foot">Make it official.</p>
-    </div>
-    <p class="fine">If it's chucking it down, we skip the market and meet at Somerset House at 7:30 instead.</p>
   </section>
-</div>
-
-<div class="yay" id="yay" hidden role="dialog" aria-modal="true" aria-labelledby="yay-h">
-  <div class="yay-card">
-    <div class="estate">Official RSVP</div>
-    <h2 id="yay-h">Yay!</h2>
-    <p class="yay-sub">It's a date.</p>
-    <div class="rule"></div>
-    <p class="yay-line"><b>Alex</b> has accepted.</p>
-    <p class="yay-line">Friday 27 November, 7pm<br>Southbank Winter Market</p>
-    <div class="stamp" aria-hidden="true">Confirmed</div>
-    <p class="yay-when" id="yay-when"></p>
-    <p class="yay-hand">Screenshot this and send it to Ry.<br>That's your official RSVP.</p>
-    <p class="yay-fine">No take-backsies. It's in writing now.</p>
-  </div>
-  <button class="yay-close" id="yay-close" type="button">Back to the plan</button>
 </div>
 
 <script>
@@ -357,21 +300,6 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
     setTimeout(function(){ plan.scrollIntoView({behavior: reduced ? "auto" : "smooth", block:"start"}); }, 60);
   }
   yes.onclick = accept;
-
-  // ---- RSVP: a screenshot-able "yay" ----
-  var yay = document.getElementById("yay"), rsvp = document.getElementById("rsvp");
-  rsvp.onclick = function(){
-    var d = new Date();
-    document.getElementById("yay-when").textContent = "Signed, sealed, delivered " + d.toLocaleDateString("en-GB", {weekday:"short", day:"numeric", month:"short"}) + ", " + d.toLocaleTimeString("en-GB", {hour:"2-digit", minute:"2-digit"});
-    yay.hidden = false;
-    var fx = document.getElementById("fx"); fx.style.zIndex = 30;
-    burst();
-    setTimeout(function(){ if (!yay.hidden) fx.style.zIndex = 10; }, 3200);
-    document.getElementById("yay-close").focus();
-  };
-  function closeYay(){ yay.hidden = true; document.getElementById("fx").style.zIndex = ""; rsvp.focus(); }
-  document.getElementById("yay-close").onclick = closeYay;
-  addEventListener("keydown", function(e){ if (e.key === "Escape" && !yay.hidden) closeYay(); });
 
   // ---- plan: timeline + map ----
   var list = document.getElementById("notes"), detail = document.getElementById("detail");
@@ -436,17 +364,6 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
     detail.innerHTML = SURPRISE;
     if (first) burst();
   }
-
-  // ---- countdown ----
-  function pad(n){ return String(n).padStart(2, "0"); }
-  function tick(){
-    var ms = Math.max(0, START - Date.now());
-    document.getElementById("cd").textContent = Math.floor(ms / 864e5);
-    document.getElementById("ch").textContent = pad(Math.floor(ms % 864e5 / 36e5));
-    document.getElementById("cm").textContent = pad(Math.floor(ms % 36e5 / 6e4));
-    document.getElementById("cs").textContent = pad(Math.floor(ms % 6e4 / 1e3));
-  }
-  tick(); setInterval(tick, 1000);
 
   // ---- snow always; hearts and gold sparks on yes ----
   var c = document.getElementById("fx"), x = c.getContext("2d"), W = 0, H = 0, dpr = window.devicePixelRatio || 1, parts = [];
