@@ -79,6 +79,7 @@ body{font-family:var(--body);font-size:16px;line-height:1.55;min-height:100%;
 
 /* ---------- the question ---------- */
 .ask{display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;margin-top:6vh}
+.ask h2 .again{display:block;font-family:var(--hand);font-style:normal;font-weight:400;font-size:.45em;color:var(--muted);margin-top:6px}
 .promise{font-family:var(--hand);font-size:22px;color:var(--muted);text-align:center;margin:8vh 0 0}
 .ask h2{font-family:var(--display);font-weight:500;font-size:clamp(38px,11vw,54px);line-height:1.1;margin:0;text-wrap:balance}
 .ask h2 i{color:var(--foil)}
@@ -205,10 +206,10 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
 <canvas id="fx" aria-hidden="true"></canvas>
 <div class="wrap">
   <svg class="lights" viewBox="0 0 520 60" aria-hidden="true"><path d="M0 10 Q 140 50 260 12 Q 380 50 520 10" fill="none" stroke="#55635c" stroke-width="1.6"/><g class="b"><circle cx="20" cy="23" r="9" fill="#ffcf86" opacity=".28"/><rect x="17.5" y="13" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="20" cy="22" rx="4.2" ry="6" fill="#ffcf86"/></g><g class="b"><circle cx="60" cy="34" r="9" fill="#c22a40" opacity=".28"/><rect x="57.5" y="24" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="60" cy="33" rx="4.2" ry="6" fill="#c22a40"/></g><g class="b"><circle cx="100" cy="42" r="9" fill="#f4efe2" opacity=".28"/><rect x="97.5" y="32" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="100" cy="41" rx="4.2" ry="6" fill="#f4efe2"/></g><g class="b"><circle cx="140" cy="45" r="9" fill="#c8a24c" opacity=".28"/><rect x="137.5" y="35" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="140" cy="44" rx="4.2" ry="6" fill="#c8a24c"/></g><g class="b"><circle cx="180" cy="42" r="9" fill="#2f9a6a" opacity=".28"/><rect x="177.5" y="32" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="180" cy="41" rx="4.2" ry="6" fill="#2f9a6a"/></g><g class="b"><circle cx="220" cy="34" r="9" fill="#ffcf86" opacity=".28"/><rect x="217.5" y="24" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="220" cy="33" rx="4.2" ry="6" fill="#ffcf86"/></g><g class="b"><circle cx="260" cy="23" r="9" fill="#c22a40" opacity=".28"/><rect x="257.5" y="13" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="260" cy="22" rx="4.2" ry="6" fill="#c22a40"/></g><g class="b"><circle cx="300" cy="34" r="9" fill="#f4efe2" opacity=".28"/><rect x="297.5" y="24" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="300" cy="33" rx="4.2" ry="6" fill="#f4efe2"/></g><g class="b"><circle cx="340" cy="42" r="9" fill="#c8a24c" opacity=".28"/><rect x="337.5" y="32" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="340" cy="41" rx="4.2" ry="6" fill="#c8a24c"/></g><g class="b"><circle cx="380" cy="45" r="9" fill="#2f9a6a" opacity=".28"/><rect x="377.5" y="35" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="380" cy="44" rx="4.2" ry="6" fill="#2f9a6a"/></g><g class="b"><circle cx="420" cy="42" r="9" fill="#ffcf86" opacity=".28"/><rect x="417.5" y="32" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="420" cy="41" rx="4.2" ry="6" fill="#ffcf86"/></g><g class="b"><circle cx="460" cy="34" r="9" fill="#c22a40" opacity=".28"/><rect x="457.5" y="24" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="460" cy="33" rx="4.2" ry="6" fill="#c22a40"/></g><g class="b"><circle cx="500" cy="23" r="9" fill="#f4efe2" opacity=".28"/><rect x="497.5" y="13" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="500" cy="22" rx="4.2" ry="6" fill="#f4efe2"/></g></svg>
-  <p class="promise">As promised. End of play.</p>
+  <p class="promise">I know you're already here but...</p>
 
   <section class="ask" id="ask">
-    <h2>Alex, will you go on <i>a date with me?</i></h2>
+    <h2>Alex, will you go on <i>a date with me?</i> <small class="again">(again)</small></h2>
     <div class="arena" id="arena">
       <button class="btn" id="yes" type="button">Yes</button>
       <button class="btn" id="no" type="button">No</button>
@@ -338,7 +339,7 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
           </svg>
         </div>
         <p><b>Straight home, no change.</b> We'll finish up somewhere central, and I'll walk you to the nearest Northern line station (Leicester Square or Embankment, depending on where the night takes us). Any southbound train to Morden runs straight to Clapham Common, about 15 minutes.</p>
-        <p><b>No Cinderella dash.</b> The Night Tube runs on Fridays, so the last train isn't a deadline. If the tubes are tubing after strikes, I'll sort you a cab.</p>
+        <p><b>No Cinderella dash.</b> The Night Tube runs on Fridays, so the last train isn't a deadline. If the tubes aren't tubing after strikes, I'll sort you a cab.</p>
       </div>
     </div>
 
