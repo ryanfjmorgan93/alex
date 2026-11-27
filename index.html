@@ -126,6 +126,8 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
 @keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(200,162,76,.45)}50%{box-shadow:0 0 0 8px rgba(200,162,76,0)}}
 #leafmap{height:360px;border-radius:8px;background:#e8e4d8;z-index:0}
 .leaflet-container{font-family:Karla,sans-serif}
+/* keyless OSM tiles, muted to a pencil-on-paper sketch */
+#leafmap .leaflet-tile-pane{filter:grayscale(1) contrast(.7) brightness(1.15);mix-blend-mode:multiply;opacity:.85}
 .lpin{width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--paper);border:2px solid var(--paper);box-shadow:0 2px 6px rgba(0,0,0,.35);display:grid;place-items:center;font:500 14px "DM Mono",monospace;cursor:pointer;transition:transform .15s}
 .lpin.active{background:var(--holly);transform:scale(1.15)}
 .lpin:focus-visible{outline:3px solid var(--foil)}
