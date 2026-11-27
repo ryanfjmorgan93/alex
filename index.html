@@ -130,6 +130,7 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
 .spin:focus-visible .halo,.spin:hover .halo{stroke:var(--holly);stroke-width:3}
 .spin.active .dot{fill:var(--holly)}
 #mapsvg .ltap{font:30px "Gochi Hand","Comic Sans MS",cursive;fill:#c22a40;background:none;padding:0}
+#mapsvg .ltap.said{font-size:27px;stroke:#efeadb;stroke-width:6px;paint-order:stroke;stroke-linejoin:round}
 .sgift{cursor:pointer}.sgift:focus{outline:none}.sgift:focus-visible .gring{stroke:var(--foil)}
 .sgift .gring{transform-box:fill-box;transform-origin:center;animation:gbeat 1.8s ease-in-out infinite}
 .sgift.found .gring{animation:none}
@@ -427,7 +428,7 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
   if (giftEl) bindPin(giftEl, function(){ openGift(4); });
   function openGift(i){
     var li = list.children[i];
-    if (giftEl) { giftEl.classList.add("found"); var t = giftEl.parentNode.querySelector(".ltap"); if (t) t.textContent = "unwrapped!"; }
+    if (giftEl) { giftEl.classList.add("found"); var t = giftEl.parentNode.querySelector(".ltap"); if (t && !t.classList.contains("said")) { t.classList.add("said"); t.textContent = ""; var NS = "http://www.w3.org/2000/svg", tx = t.getAttribute("x"); ["Hungry? Sorted.", "Not hungry? Also sorted."].forEach(function(line, k){ var sp = document.createElementNS(NS, "tspan"); sp.setAttribute("x", tx); sp.setAttribute("dy", k ? "1.1em" : "-0.05em"); sp.textContent = line; t.appendChild(sp); }); } }
     var first = !li.classList.contains("opened");
     li.classList.add("opened");
     pins.forEach(function(p){ p.classList.remove("active"); });
