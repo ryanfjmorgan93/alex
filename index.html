@@ -310,7 +310,7 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
     var map = L.map(el, {scrollWheelZoom:false, zoomSnap:0.25, dragging:!L.Browser.mobile, tap:true, zoomControl:true, attributionControl:true});
     theMap = map;
     map.setView([51.5085,-0.1185], 15);
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {maxZoom:19, subdomains:"abcd", attribution:"&copy; OpenStreetMap contributors &copy; CARTO"}).addTo(map);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom:19, attribution:"&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"}).addTo(map);
     var route = [[51.5033,-0.1135],[51.5043,-0.1149],[51.5052,-0.1161],[51.5060,-0.1172],[51.5066,-0.1162],[51.5070,-0.1152],[51.5099,-0.1180],[51.5106,-0.1185],[51.5109,-0.1174],[51.5106,-0.1185],[51.5114,-0.1192],[51.5119,-0.1197],[51.5121,-0.1212],[51.5120,-0.1226]];
     L.polyline(route, {color:"#ffffff", weight:8, opacity:.9}).addTo(map);
     L.polyline(route, {color:"#c22a40", weight:4, dashArray:"8 8"}).addTo(map);
