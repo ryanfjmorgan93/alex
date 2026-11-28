@@ -3,12 +3,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta property="og:type" content="website">
-<meta property="og:title" content="A question for Alex">
-<meta property="og:description" content="Tap to answer.">
+<meta property="og:title" content="The post-match report">
+<meta property="og:description" content="Official scores are in.">
 <meta name="theme-color" content="#0e1f1a">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}</style>
 </head><body>
-<title>A question for Alex</title>
+<title>The post-match report</title>
 <meta name="description" content="A question for Alex.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,7 +79,17 @@ body{font-family:var(--body);font-size:16px;line-height:1.55;min-height:100%;
 
 /* ---------- the question ---------- */
 .ask{display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;margin-top:6vh}
-.ask h2 .again{display:block;font-family:var(--hand);font-style:normal;font-weight:400;font-size:.45em;color:var(--muted);margin-top:6px}
+.report{display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center}
+.report h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,10vw,48px);line-height:1.05;margin:0;text-wrap:balance}
+.card{width:100%;background:var(--paper);color:var(--ink);border-radius:10px;padding:18px 18px 16px;box-shadow:0 24px 60px -24px rgba(0,0,0,.7);transform:rotate(-1deg)}
+.scores{list-style:none;margin:0 0 12px;padding:0;font-family:var(--hand);font-size:21px;text-align:left}
+.scores li{display:flex;justify-content:space-between;gap:12px;border-bottom:1.5px dashed rgba(27,38,33,.25);padding:6px 0}
+.scores b{font-weight:400;color:var(--holly);white-space:nowrap}
+.final{display:flex;flex-direction:column;align-items:center;gap:2px;margin-top:6px}
+.final .lab{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#6c6450}
+.final .big{font-family:var(--hand);font-size:84px;line-height:1;color:var(--holly);transform:rotate(-4deg)}
+.final .big small{font-size:.4em;color:var(--ink)}
+.final .why{font-family:var(--hand);font-size:20px;margin:4px 0 0;color:var(--ink)}
 .promise{font-family:var(--hand);font-size:22px;color:var(--muted);text-align:center;margin:8vh 0 0}
 .ask h2{font-family:var(--display);font-weight:500;font-size:clamp(38px,11vw,54px);line-height:1.1;margin:0;text-wrap:balance}
 .ask h2 i{color:var(--foil)}
@@ -94,7 +104,8 @@ body{font-family:var(--body);font-size:16px;line-height:1.55;min-height:100%;
 .quip{font-family:var(--hand);font-size:22px;color:var(--muted);min-height:1.4em;margin:0}
 
 /* ---------- revealed plan ---------- */
-.plan{display:flex;flex-direction:column;gap:28px}
+.plan{display:flex;flex-direction:column;gap:28px;min-height:60vh;justify-content:center}
+.oneline{font-family:var(--hand);font-size:28px;line-height:1.3;color:var(--frost);margin:14px 0}
 .plan[hidden]{display:none!important}
 .cheers{text-align:center;display:flex;flex-direction:column;gap:6px}
 .cheers h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,9vw,42px);margin:0;line-height:1.05}
@@ -125,18 +136,6 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
 @keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(200,162,76,.45)}50%{box-shadow:0 0 0 8px rgba(200,162,76,0)}}
 #leafmap{height:360px;border-radius:8px;background:#e8e4d8;z-index:0}
 .leaflet-container{font-family:Karla,sans-serif}
-/* hand-drawn map */
-#mapsvg{display:block;width:100%;height:auto;border-radius:6px}
-.spin{cursor:pointer}.spin:focus{outline:none}
-.spin:focus-visible .halo,.spin:hover .halo{stroke:var(--holly);stroke-width:3}
-.spin.active .dot{fill:var(--holly)}
-#mapsvg .ltap{font:30px "Gochi Hand","Comic Sans MS",cursive;fill:#c22a40;background:none;padding:0}
-#mapsvg .ltap.said{font-size:27px;stroke:#efeadb;stroke-width:6px;paint-order:stroke;stroke-linejoin:round}
-.sgift{cursor:pointer}.sgift:focus{outline:none}.sgift:focus-visible .gring{stroke:var(--foil)}
-.sgift .gring{transform-box:fill-box;transform-origin:center;animation:gbeat 1.8s ease-in-out infinite}
-.sgift.found .gring{animation:none}
-@keyframes gbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
-@media (prefers-reduced-motion:reduce){.sgift .gring{animation:none}}
 .lpin{width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--paper);border:2px solid var(--paper);box-shadow:0 2px 6px rgba(0,0,0,.35);display:grid;place-items:center;font:500 14px "DM Mono",monospace;cursor:pointer;transition:transform .15s}
 .lpin.active{background:var(--holly);transform:scale(1.15)}
 .lpin:focus-visible{outline:3px solid var(--foil)}
@@ -206,10 +205,24 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
 <canvas id="fx" aria-hidden="true"></canvas>
 <div class="wrap">
   <svg class="lights" viewBox="0 0 520 60" aria-hidden="true"><path d="M0 10 Q 140 50 260 12 Q 380 50 520 10" fill="none" stroke="#55635c" stroke-width="1.6"/><g class="b"><circle cx="20" cy="23" r="9" fill="#ffcf86" opacity=".28"/><rect x="17.5" y="13" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="20" cy="22" rx="4.2" ry="6" fill="#ffcf86"/></g><g class="b"><circle cx="60" cy="34" r="9" fill="#c22a40" opacity=".28"/><rect x="57.5" y="24" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="60" cy="33" rx="4.2" ry="6" fill="#c22a40"/></g><g class="b"><circle cx="100" cy="42" r="9" fill="#f4efe2" opacity=".28"/><rect x="97.5" y="32" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="100" cy="41" rx="4.2" ry="6" fill="#f4efe2"/></g><g class="b"><circle cx="140" cy="45" r="9" fill="#c8a24c" opacity=".28"/><rect x="137.5" y="35" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="140" cy="44" rx="4.2" ry="6" fill="#c8a24c"/></g><g class="b"><circle cx="180" cy="42" r="9" fill="#2f9a6a" opacity=".28"/><rect x="177.5" y="32" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="180" cy="41" rx="4.2" ry="6" fill="#2f9a6a"/></g><g class="b"><circle cx="220" cy="34" r="9" fill="#ffcf86" opacity=".28"/><rect x="217.5" y="24" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="220" cy="33" rx="4.2" ry="6" fill="#ffcf86"/></g><g class="b"><circle cx="260" cy="23" r="9" fill="#c22a40" opacity=".28"/><rect x="257.5" y="13" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="260" cy="22" rx="4.2" ry="6" fill="#c22a40"/></g><g class="b"><circle cx="300" cy="34" r="9" fill="#f4efe2" opacity=".28"/><rect x="297.5" y="24" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="300" cy="33" rx="4.2" ry="6" fill="#f4efe2"/></g><g class="b"><circle cx="340" cy="42" r="9" fill="#c8a24c" opacity=".28"/><rect x="337.5" y="32" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="340" cy="41" rx="4.2" ry="6" fill="#c8a24c"/></g><g class="b"><circle cx="380" cy="45" r="9" fill="#2f9a6a" opacity=".28"/><rect x="377.5" y="35" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="380" cy="44" rx="4.2" ry="6" fill="#2f9a6a"/></g><g class="b"><circle cx="420" cy="42" r="9" fill="#ffcf86" opacity=".28"/><rect x="417.5" y="32" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="420" cy="41" rx="4.2" ry="6" fill="#ffcf86"/></g><g class="b"><circle cx="460" cy="34" r="9" fill="#c22a40" opacity=".28"/><rect x="457.5" y="24" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="460" cy="33" rx="4.2" ry="6" fill="#c22a40"/></g><g class="b"><circle cx="500" cy="23" r="9" fill="#f4efe2" opacity=".28"/><rect x="497.5" y="13" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="500" cy="22" rx="4.2" ry="6" fill="#f4efe2"/></g></svg>
-  <p class="promise">I know you're already here but...</p>
+  <p class="promise">The official post-match report</p>
+  <section class="report">
+    <h1>Thanks for coming, Alex.</h1>
+    <div class="card">
+      <ul class="scores">
+        <li><span>Company</span><b>10</b></li>
+        <li><span>Laughs</span><b>10</b></li>
+        <li><span>Mulled white wine hunt</span><b>valiant</b></li>
+        <li><span>Times I stacked it on the ice</span><b>0</b></li>
+        <li><span>Overall vibe</span><b>electric</b></li>
+      </ul>
+      <div class="final"><span class="lab">Final score</span><span class="big">9<small>/10</small></span>
+        <p class="why">Docked one point because it ended. Rules are rules.</p></div>
+    </div>
+  </section>
 
   <section class="ask" id="ask">
-    <h2>Alex, will you go on <i>a date with me?</i> <small class="again">(again)</small></h2>
+    <h2>Round two? <i>Same time, new plan?</i></h2>
     <div class="arena" id="arena">
       <button class="btn" id="yes" type="button">Yes</button>
       <button class="btn" id="no" type="button">No</button>
@@ -219,151 +232,19 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
 
   <section class="plan" id="plan" hidden>
     <div class="cheers">
-      <h2>Excellent choice <span style="white-space:nowrap">(again).</span></h2>
-      <p>I can't believe you're still here. Here's the actual plan.</p>
+      <h2>Excellent choice (again, again).</h2>
+      <p class="oneline">Score upgraded to 10/10. Plan to follow. Probably another website.</p>
+      <p class="cheers-sub">Now reply to me like a normal person.</p>
     </div>
-
-    <div>
-      <h3 class="sec">The map</h3>
-      <figure class="map" style="margin:0">
-        <svg id="mapsvg" viewBox="0 0 600 685" role="group" aria-label="Hand-drawn map of the walk: Waterloo, the Southbank Winter Market, over Waterloo Bridge to Somerset House, then up to the Covent Garden tree. Tap a pin, and the present.">
-        <defs><filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="4"/></filter><pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8fa7a6" stroke-width="1.2" opacity=".55"/></pattern></defs>
-        <rect width="600" height="685" fill="#efeadb"/>
-        <g filter="url(#wob)" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M170.5 710.3 Q176.8 532.8 191.1 474.4 Q205.3 416.1 243.2 372.9 Q281.1 329.8 320.5 299.4 Q360.0 268.9 408.9 251.2 Q457.9 233.4 536.8 223.3 L615.8 213.1 L615.8 365.3  L615.8 365.3 Q464.2 390.7 435.8 408.5 Q407.4 426.2 375.8 451.6 Q344.2 476.9 320.5 517.5 Q296.8 558.1 288.9 634.2 L281.1 710.3 Z" fill="#cfdcda" stroke="none"/><path d="M170.5 710.3 Q176.8 532.8 191.1 474.4 Q205.3 416.1 243.2 372.9 Q281.1 329.8 320.5 299.4 Q360.0 268.9 408.9 251.2 Q457.9 233.4 536.8 223.3 L615.8 213.1 L615.8 365.3  L615.8 365.3 Q464.2 390.7 435.8 408.5 Q407.4 426.2 375.8 451.6 Q344.2 476.9 320.5 517.5 Q296.8 558.1 288.9 634.2 L281.1 710.3 Z" fill="url(#hatch)" stroke="none"/>
-        <path d="M170.5 710.3 Q176.8 532.8 191.1 474.4 Q205.3 416.1 243.2 372.9 Q281.1 329.8 320.5 299.4 Q360.0 268.9 408.9 251.2 Q457.9 233.4 536.8 223.3 L615.8 213.1" stroke="#6f8786" stroke-width="2"/><path d="M281.1 710.3 Q296.8 558.1 320.5 517.5 Q344.2 476.9 375.8 451.6 Q407.4 426.2 435.8 408.5 Q464.2 390.7 540.0 378.0 L615.8 365.3" stroke="#6f8786" stroke-width="2"/>
-        <path d="M85.3 360.2 Q173.7 304.4 217.9 271.5 Q262.1 238.5 293.7 213.1 Q325.3 187.7 360.0 172.5 Q394.7 157.3 442.1 144.6 Q489.5 131.9 544.7 116.7 L600.0 101.5" stroke="#cdbf9d" stroke-width="10"/>
-        <path d="M151.6 710.3 Q157.9 522.6 172.1 459.2 Q186.3 395.8 225.8 352.6 Q265.3 309.5 307.9 279.1 Q350.5 248.6 401.1 230.9 Q451.6 213.1 525.8 203.0 L600.0 192.8" stroke="#cdbf9d" stroke-width="8"/>
-        <path d="M461.1 426.2 L360.0 248.6" stroke="#cdbf9d" stroke-width="11"/>
-        <path d="M360.0 248.6 L325.3 187.7" stroke="#cdbf9d" stroke-width="8"/>
-        <path d="M325.3 187.7 Q300.0 142.1 290.5 116.7 L281.1 91.3" stroke="#cdbf9d" stroke-width="8"/>
-        <path d="M296.8 147.1 L243.2 147.1" stroke="#cdbf9d" stroke-width="7"/>
-        <path d="M41.1 142.1 Q126.3 91.3 189.5 68.5 L252.6 45.7" stroke="#cdbf9d" stroke-width="8"/>
-        <path d="M72.6 329.8 Q78.9 203.0 91.6 147.1 L104.2 91.3" stroke="#cdbf9d" stroke-width="8"/>
-        <path d="M284.2 608.9 Q325.3 517.5 356.8 482.0 Q388.4 446.5 420.0 426.2 Q451.6 405.9 502.1 393.2 L552.6 380.5" stroke="#cdbf9d" stroke-width="7"/>
-        <path d="M552.6 608.9 Q505.3 532.8 483.2 479.5 L461.1 426.2" stroke="#cdbf9d" stroke-width="9"/>
-        <path d="M-15.8 253.7 L85.3 345.0" stroke="#cdbf9d" stroke-width="8"/>
-        <path d="M85.3 360.2 Q173.7 304.4 217.9 271.5 Q262.1 238.5 293.7 213.1 Q325.3 187.7 360.0 172.5 Q394.7 157.3 442.1 144.6 Q489.5 131.9 544.7 116.7 L600.0 101.5" stroke="#f7f3e8" stroke-width="7"/>
-        <path d="M151.6 710.3 Q157.9 522.6 172.1 459.2 Q186.3 395.8 225.8 352.6 Q265.3 309.5 307.9 279.1 Q350.5 248.6 401.1 230.9 Q451.6 213.1 525.8 203.0 L600.0 192.8" stroke="#f7f3e8" stroke-width="5"/>
-        <path d="M461.1 426.2 L360.0 248.6" stroke="#f7f3e8" stroke-width="8"/>
-        <path d="M360.0 248.6 L325.3 187.7" stroke="#f7f3e8" stroke-width="5"/>
-        <path d="M325.3 187.7 Q300.0 142.1 290.5 116.7 L281.1 91.3" stroke="#f7f3e8" stroke-width="5"/>
-        <path d="M296.8 147.1 L243.2 147.1" stroke="#f7f3e8" stroke-width="4"/>
-        <path d="M41.1 142.1 Q126.3 91.3 189.5 68.5 L252.6 45.7" stroke="#f7f3e8" stroke-width="5"/>
-        <path d="M72.6 329.8 Q78.9 203.0 91.6 147.1 L104.2 91.3" stroke="#f7f3e8" stroke-width="5"/>
-        <path d="M284.2 608.9 Q325.3 517.5 356.8 482.0 Q388.4 446.5 420.0 426.2 Q451.6 405.9 502.1 393.2 L552.6 380.5" stroke="#f7f3e8" stroke-width="4"/>
-        <path d="M552.6 608.9 Q505.3 532.8 483.2 479.5 L461.1 426.2" stroke="#f7f3e8" stroke-width="6"/>
-        <path d="M-15.8 253.7 L85.3 345.0" stroke="#f7f3e8" stroke-width="5"/>
-        <path d="M325.3 512.5 L198.9 400.8" stroke="#7b735f" stroke-width="3"/><path d="M333.3 510.5 L206.9 398.8" stroke="#7b735f" stroke-width="1.5" stroke-dasharray="2 5"/>
-        <rect x="350.5" y="182.7" width="63.2" height="66.0" fill="#e2d9c3" stroke="#7b735f" stroke-width="1.6" />
-        <ellipse cx="382.1" cy="215.6" rx="13" ry="8" fill="#dfeef2" stroke="#6f8786" stroke-width="1.4"/>
-        <rect x="180.0" y="116.7" width="75.8" height="60.9" fill="#e9e1cc" stroke="#7b735f" stroke-width="1.6" />
-        <rect x="202.1" y="131.9" width="34.7" height="30.4" fill="#d9ceb2" stroke="#7b735f" stroke-width="1.6" />
-        <rect x="394.7" y="446.5" width="37.9" height="40.6" fill="#e2d9c3" stroke="#7b735f" stroke-width="1.6" />
-        <rect x="470.5" y="375.5" width="37.9" height="40.6" fill="#e2d9c3" stroke="#7b735f" stroke-width="1.6" />
-        <rect x="473.7" y="558.1" width="78.9" height="71.0" fill="#e2d9c3" stroke="#7b735f" stroke-width="1.6" />
-        <circle cx="312.6" cy="593.6" r="22" stroke="#7b735f" stroke-width="2"/><circle cx="312.6" cy="593.6" r="3" fill="#7b735f"/>
-        <line x1="312.6" y1="593.6" x2="334.6" y2="593.6" stroke="#7b735f" stroke-width=".8"/>
-        <line x1="312.6" y1="593.6" x2="331.7" y2="604.6" stroke="#7b735f" stroke-width=".8"/>
-        <line x1="312.6" y1="593.6" x2="323.6" y2="612.7" stroke="#7b735f" stroke-width=".8"/>
-        <line x1="312.6" y1="593.6" x2="312.6" y2="615.6" stroke="#7b735f" stroke-width=".8"/>
-        <line x1="312.6" y1="593.6" x2="301.6" y2="612.7" stroke="#7b735f" stroke-width=".8"/>
-        <line x1="312.6" y1="593.6" x2="293.6" y2="604.6" stroke="#7b735f" stroke-width=".8"/>
-        <line x1="312.6" y1="593.6" x2="290.6" y2="593.6" stroke="#7b735f" stroke-width=".8"/>
-        <line x1="312.6" y1="593.6" x2="293.6" y2="582.6" stroke="#7b735f" stroke-width=".8"/>
-        <line x1="312.6" y1="593.6" x2="301.6" y2="574.6" stroke="#7b735f" stroke-width=".8"/>
-        <line x1="312.6" y1="593.6" x2="312.6" y2="571.6" stroke="#7b735f" stroke-width=".8"/>
-        <line x1="312.6" y1="593.6" x2="323.6" y2="574.6" stroke="#7b735f" stroke-width=".8"/>
-        <line x1="312.6" y1="593.6" x2="331.7" y2="582.6" stroke="#7b735f" stroke-width=".8"/>
-        <path d="M358.2 441.4 l5 -6 l5 6 z" fill="#c22a40" stroke="#7b2030" stroke-width="1"/>
-        <path d="M375.5 435.3 l5 -6 l5 6 z" fill="#c22a40" stroke="#7b2030" stroke-width="1"/>
-        <path d="M392.9 429.3 l5 -6 l5 6 z" fill="#c22a40" stroke="#7b2030" stroke-width="1"/>
-        <path d="M410.3 423.2 l5 -6 l5 6 z" fill="#c22a40" stroke="#7b2030" stroke-width="1"/>
-        <path d="M427.6 417.1 l5 -6 l5 6 z" fill="#c22a40" stroke="#7b2030" stroke-width="1"/>
-        </g>
-        <g filter="url(#wob)"><path d="M505.3,593.6 L461.1,542.9 L423.2,497.2 L388.4,456.7 L420.0,426.2 L451.6,405.9 L363.2,258.8 L347.4,223.3 L382.1,208.0 L347.4,223.3 L325.3,182.7 L309.5,157.3 L262.1,147.1 L217.9,152.2" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/><path d="M505.3,593.6 L461.1,542.9 L423.2,497.2 L388.4,456.7 L420.0,426.2 L451.6,405.9 L363.2,258.8 L347.4,223.3 L382.1,208.0 L347.4,223.3 L325.3,182.7 L309.5,157.3 L262.1,147.1 L217.9,152.2" fill="none" stroke="#b3283c" stroke-width="3.5" stroke-dasharray="8 7" stroke-linecap="round" stroke-linejoin="round"/></g>
-        <g font-family="Gochi Hand, Comic Sans MS, cursive">
-        <text x="432.6" y="304.4" font-size="30" fill="#4f6968" text-anchor="start" transform="rotate(-12 432.6 304.4)" font-weight="400">River Thames</text>
-        <text x="426.3" y="131.9" font-size="24" fill="#7b735f" text-anchor="start" transform="rotate(-14 426.3 131.9)" font-weight="400">Strand</text>
-        <text x="495.8" y="426.2" font-size="22" fill="#7b735f" text-anchor="start" transform="rotate(-50 495.8 426.2)" font-weight="400">Waterloo Bridge</text>
-        <text x="322.1" y="142.1" font-size="20" fill="#7b735f" text-anchor="start" transform="rotate(-55 322.1 142.1)" font-weight="400">Wellington St</text>
-        <text x="104.2" y="50.7" font-size="20" fill="#7b735f" text-anchor="start" transform="rotate(-22 104.2 50.7)" font-weight="400">Long Acre</text>
-        <text x="312.6" y="649.5" font-size="22" fill="#7b735f" text-anchor="middle" transform="rotate(0 312.6 649.5)" font-weight="400">London Eye</text>
-        <text x="217.9" y="203.0" font-size="20" fill="#7b735f" text-anchor="middle" transform="rotate(0 217.9 203.0)" font-weight="400">the piazza</text>
-        <text x="517.9" y="659.6" font-size="22" fill="#b3283c" text-anchor="middle" transform="rotate(0 517.9 659.6)" font-weight="400">start here-ish</text>
-        </g>
-        <g transform="translate(208.4 147.1)"><path d="M0 -20 L9 -4 L4 -4 L11 8 L-11 8 L-4 -4 L-9 -4 Z" fill="#2f6b4c" stroke="#1c3f2d" stroke-width="1.4"/><rect x="-2" y="8" width="4" height="5" fill="#7b5a3a"/><circle cx="0" cy="-21" r="2.6" fill="#c8a24c"/></g>
-        <g><circle cx="505.3" cy="593.6" r="7" fill="#fff" stroke="#dc241f" stroke-width="3"/><rect x="495.3" y="591.6" width="20" height="4" fill="#0019a8"/><text x="519.3" y="598.6" font-family="Karla, sans-serif" font-size="18" font-weight="700" stroke="#efeadb" stroke-width="4" paint-order="stroke" fill="#1b2621" text-anchor="start">Waterloo</text></g>
-        <g><circle cx="186.3" cy="385.6" r="7" fill="#fff" stroke="#dc241f" stroke-width="3"/><rect x="176.3" y="383.6" width="20" height="4" fill="#0019a8"/><text x="174.3" y="407.6" font-family="Karla, sans-serif" font-size="18" font-weight="700" stroke="#efeadb" stroke-width="4" paint-order="stroke" fill="#1b2621" text-anchor="end">Embankment</text></g>
-        <g><circle cx="151.6" cy="355.2" r="7" fill="#fff" stroke="#dc241f" stroke-width="3"/><rect x="141.6" y="353.2" width="20" height="4" fill="#0019a8"/><text x="139.6" y="355.2" font-family="Karla, sans-serif" font-size="18" font-weight="700" stroke="#efeadb" stroke-width="4" paint-order="stroke" fill="#1b2621" text-anchor="end">Charing Cross</text></g>
-        <g><circle cx="164.2" cy="106.6" r="7" fill="#fff" stroke="#dc241f" stroke-width="3"/><rect x="154.2" y="104.6" width="20" height="4" fill="#0019a8"/><text x="152.2" y="94.6" font-family="Karla, sans-serif" font-size="18" font-weight="700" stroke="#efeadb" stroke-width="4" paint-order="stroke" fill="#1b2621" text-anchor="end">Covent Garden</text></g>
-        <g><circle cx="44.2" cy="187.7" r="7" fill="#fff" stroke="#dc241f" stroke-width="3"/><rect x="34.2" y="185.7" width="20" height="4" fill="#0019a8"/><text x="38.2" y="211.7" font-family="Karla, sans-serif" font-size="18" font-weight="700" stroke="#efeadb" stroke-width="4" paint-order="stroke" fill="#1b2621" text-anchor="start">Leicester Sq</text></g>
-        <g id="pins" font-family="DM Mono, monospace" font-size="18" font-weight="500" text-anchor="middle">
-        <g class="spin" data-i="0" tabindex="0" role="button" aria-label="Stop 1, Southbank Winter Market"><circle class="halo" cx="388.4" cy="456.7" r="21" fill="transparent"/><circle class="dot" cx="388.4" cy="456.7" r="17" fill="#1b2621" stroke="#efeadb" stroke-width="2.5"/><text x="388.4" y="462.7" fill="#efeadb">1</text></g>
-        <g class="spin" data-i="1" tabindex="0" role="button" aria-label="Stop 2, Somerset House"><circle class="halo" cx="382.1" cy="208.0" r="21" fill="transparent"/><circle class="dot" cx="382.1" cy="208.0" r="17" fill="#1b2621" stroke="#efeadb" stroke-width="2.5"/><text x="382.1" y="214.0" fill="#efeadb">2</text></g>
-        <g class="spin" data-i="2" tabindex="0" role="button" aria-label="Stop 3, Covent Garden tree"><circle class="halo" cx="217.9" cy="152.2" r="21" fill="transparent"/><circle class="dot" cx="217.9" cy="152.2" r="17" fill="#1b2621" stroke="#efeadb" stroke-width="2.5"/><text x="217.9" y="158.2" fill="#efeadb">3</text></g>
-        </g>
-        <g font-family="Gochi Hand, Comic Sans MS, cursive" font-size="27" fill="#1b2621">
-        <text x="366.4" y="486.7" text-anchor="end" stroke="#efeadb" stroke-width="4" paint-order="stroke">Winter Market</text>
-        <text x="404.1" y="196.0" text-anchor="start" stroke="#efeadb" stroke-width="4" paint-order="stroke">Somerset House</text>
-        <text x="191.9" y="162.2" text-anchor="end" stroke="#efeadb" stroke-width="4" paint-order="stroke">the big tree</text>
-        </g>
-        <g class="sgiftwrap"><g class="sgift lgift-svg" tabindex="0" role="button" aria-label="A present. Tap to unwrap." transform="translate(230.5 60.9)"><circle class="gring" r="24" fill="#c22a40" stroke="#efeadb" stroke-width="3"/><g transform="translate(-12 -13) scale(1.2)"><rect x="2" y="8" width="16" height="10" rx="1.5" fill="#efeadb"/><rect x="1" y="5" width="18" height="4" rx="1.5" fill="#efeadb"/><rect x="8.5" y="5" width="3" height="13" fill="#c8a24c"/></g></g><text class="ltap" x="262.5" y="68.9" font-family="Gochi Hand, cursive" font-size="28" fill="#c22a40" transform="rotate(-6 262.5 68.9)">tap me!</text></g>
-        </svg>
-        <figcaption class="mapnote">Tap a pin, and definitely the present. Not to scale, much like my confidence.</figcaption>
-      </figure>
-      <div class="detail" id="detail" aria-live="polite" style="margin-top:12px">Tap a pin on the map, or a stop below.</div>
-    </div>
-
-    <div>
-      <h3 class="sec">The plan</h3>
-      <ol class="notes-list" id="notes"></ol>
-    </div>
-
-    <div>
-      <h3 class="sec">Getting you home</h3>
-      <div class="route homeroute">
-        <div class="line-wrap">
-          <p class="linecap">Northern line · southbound · about 15 min</p>
-          <svg class="line-svg" viewBox="0 0 640 110" role="img" aria-label="Northern line southbound from central London straight to Clapham Common, no change, about fifteen minutes">
-            <line x1="40" y1="50" x2="600" y2="50" stroke="#e7efe9" stroke-width="9" stroke-linecap="round"/>
-            <g font-family="Karla, sans-serif" font-size="21" fill="#e7efe9" text-anchor="middle">
-              <circle cx="40" cy="50" r="15" fill="#c8a24c" stroke="#e7efe9" stroke-width="4"/>
-              <text x="40" y="98" font-weight="700" text-anchor="start" dx="-24">Central London</text>
-              <circle cx="180" cy="50" r="8" fill="#0e1f1a" stroke="#e7efe9" stroke-width="4"/>
-              <circle cx="320" cy="50" r="8" fill="#0e1f1a" stroke="#e7efe9" stroke-width="4"/>
-              <circle cx="460" cy="50" r="8" fill="#0e1f1a" stroke="#e7efe9" stroke-width="4"/>
-              <circle cx="600" cy="50" r="15" fill="#c8a24c" stroke="#e7efe9" stroke-width="4"/>
-              <text x="600" y="98" font-weight="700" text-anchor="end" dx="22">Clapham Common</text>
-            </g>
-          </svg>
-        </div>
-        <p><b>Straight home, no change.</b> We'll finish up somewhere central, and I'll walk you to the nearest Northern line station (Leicester Square or Embankment, depending on where the night takes us). Any southbound train to Morden runs straight to Clapham Common, about 15 minutes.</p>
-        <p><b>No Cinderella dash.</b> The Night Tube runs on Fridays, so the last train isn't a deadline. If the tubes aren't tubing after strikes, I'll sort you a cab.</p>
-      </div>
-    </div>
-
   </section>
 </div>
 
 <script>
 (function(){
   "use strict";
-  // ---- the evening. November is GMT, so UTC = London time. ----
-  var START = Date.UTC(2026, 10, 27, 19, 0);
-  var STOPS = [
-    {t:"7:00pm", w:"Southbank Winter Market", d:"Meet by the chalets at the Royal Festival Hall end. Lights, a mooch and something warm. Our mission: find out once and for all whether mulled white wine exists. If not, hot cider.", pin:0},
-    {t:"7:45pm", w:"A stroll over Waterloo Bridge", d:"Best view in London, both directions, and it's free. No rush.", pin:null},
-    {t:"8:00pm", w:"Drinks at Somerset House", d:"The Clubhouse overlooks the rink. We sip something white and watch strangers stack it on the ice, fake-laughing at each other's jokes while we score every wipeout out of ten.", pin:1, aside:"I will not be skating. I will not be stacking it."},
-    {t:"8:45pm", w:"The big Covent Garden tree", d:"A wander past the tree and the giant bells. Photo optional, but strongly encouraged.", pin:2},
-    {t:"9:00pm", w:"Then we wing it\u2026", d:"(I may have a trick or two up my sleeve.)", pin:null, gift:true}
-  ];
-  var SURPRISE = "<span class='t'>9:00pm \u00b7 Unwrapped</span><b>Hungry? Sorted. Not hungry? Also sorted.</b><br>Sadly Spoons wouldn't move Curry Club to Friday for us, despite my best efforts. But whichever way your stomach votes, I've got something up my sleeve. Where? That's the surprise.";
-  var GIFT = "<span class='giftbtn'><svg width='22' height='22' viewBox='0 0 20 20' aria-hidden='true'><rect x='2' y='8' width='16' height='10' rx='1.5' fill='#c8a24c'/><rect x='1' y='5' width='18' height='4' rx='1.5' fill='#c8a24c'/><rect x='8.5' y='5' width='3' height='13' fill='#b3283c'/></svg>Tap to unwrap</span><p class='giftin'><b>Hungry? Sorted. Not hungry? Also sorted.</b> Where? That's the surprise.</p>";
-
   // ---- the No button that would rather not ----
   var no = document.getElementById("no"), yes = document.getElementById("yes"), arena = document.getElementById("arena"), quip = document.getElementById("quip");
-  var LINES = ["Are you sure?", "The wine is white though", "Alright Ray J, calm down", "The people pleaser in you wants the other button", "Button's a bit broken, sorry", "It's really not working", "OK fine, have it your way"];
+  var LINES = ["Are you sure?", "That's not what the score says", "Alright Ray J, calm down", "The people pleaser in you wants the other button", "Button's still broken, sorry", "It was never going to work", "OK fine, have it your way"];
   var tries = 0, reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   function dodge(e){
     if (e) e.preventDefault();
@@ -388,55 +269,12 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
 
   function accept(){
     var plan = document.getElementById("plan");
-    document.getElementById("ask").hidden = true; document.querySelector(".promise").hidden = true;
+    document.getElementById("ask").hidden = true; document.querySelector(".promise").hidden = true; document.querySelector(".report").hidden = true;
     plan.hidden = false;
     burst();
     setTimeout(function(){ plan.scrollIntoView({behavior: reduced ? "auto" : "smooth", block:"start"}); }, 60);
   }
   yes.onclick = accept;
-
-  // ---- plan: timeline + map ----
-  var list = document.getElementById("notes"), detail = document.getElementById("detail");
-  var pins = [], giftEl = null, theMap = null;
-  pins = Array.prototype.slice.call(document.querySelectorAll("#mapsvg .spin"));
-  giftEl = document.querySelector("#mapsvg .sgift");
-  function show(i){
-    var s = STOPS[i];
-    if (s.gift) { openGift(i); return; }
-    detail.classList.remove("surprise");
-    detail.innerHTML = "<span class='t'>" + s.t + "</span><b>" + s.w + "</b><br>" + s.d;
-    pins.forEach(function(p){ p.classList.toggle("active", s.pin !== null && +p.dataset.i === s.pin); });
-  }
-  STOPS.forEach(function(s, i){
-    var li = document.createElement("li");
-    li.className = "note"; li.tabIndex = 0; li.setAttribute("role","button");
-    li.innerHTML = "<div class='tm'>" + s.t.replace("pm","") + "</div><div class='bd'><h4>" + s.w + "</h4><p>" + s.d + "</p>" + (s.gift ? GIFT : "") + (s.aside ? "<p class='aside'>" + s.aside + "</p>" : "") + "</div>";
-    if (s.gift) li.setAttribute("aria-label", s.w + " Tap to open the surprise.");
-    li.addEventListener("click", function(){ show(i); });
-    li.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(i); } });
-    list.appendChild(li);
-  });
-  function bindPin(el, fn){
-    el.addEventListener("click", fn);
-    el.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
-  }
-  pins.forEach(function(p){
-    bindPin(p, function(){
-      var n = +p.dataset.i;
-      for (var i = 0; i < STOPS.length; i++) if (STOPS[i].pin === n) { show(i); return; }
-    });
-  });
-  if (giftEl) bindPin(giftEl, function(){ openGift(4); });
-  function openGift(i){
-    var li = list.children[i];
-    if (giftEl) { giftEl.classList.add("found"); var t = giftEl.parentNode.querySelector(".ltap"); if (t && !t.classList.contains("said")) { t.classList.add("said"); t.textContent = ""; var NS = "http://www.w3.org/2000/svg", tx = t.getAttribute("x"); ["Hungry? Sorted.", "Not hungry? Also sorted."].forEach(function(line, k){ var sp = document.createElementNS(NS, "tspan"); sp.setAttribute("x", tx); sp.setAttribute("dy", k ? "1.1em" : "-0.05em"); sp.textContent = line; t.appendChild(sp); }); } }
-    var first = !li.classList.contains("opened");
-    li.classList.add("opened");
-    pins.forEach(function(p){ p.classList.remove("active"); });
-    detail.classList.add("surprise");
-    detail.innerHTML = SURPRISE;
-    if (first) burst();
-  }
 
   // ---- snow always; hearts and gold sparks on yes ----
   var c = document.getElementById("fx"), x = c.getContext("2d"), W = 0, H = 0, dpr = window.devicePixelRatio || 1, parts = [];
@@ -473,5 +311,4 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
   }
 })();
 </script>
-
 </body></html>
