@@ -2,175 +2,136 @@
 <html lang="en-GB"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Another question for Alex">
-<meta property="og:description" content="Tap to answer. Again.">
-<meta name="theme-color" content="#120b0c">
-<title>Another question for Alex</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Caveat:wght@500;700&family=Karla:wght@400;600&display=swap">
+<meta property="og:title" content="Next train: Date No. 2"><meta property="og:description" content="One question for Alex.">
+<title>Next train: Date No. 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Doto:wght@700;900&family=Space+Grotesk:wght@400;500;700&family=DM+Mono:wght@400&display=swap">
 <style>
-/* Date 2: dark, cosy, candlelit. Deep claret night, amber candle glow, a hint of Victorian tiles. Single dark theme on purpose. */
-:root{
-  --night:#120b0c; --night2:#21131a; --claret:#5a1e2b; --wine:#8c2f43;
-  --candle:#ffbf69; --flame:#ffd89a; --cream:#f3e6d3; --muted:#bfa995; --tile:#2a1b20;
-  --serif:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
-  --hand:"Caveat","Gochi Hand","Comic Sans MS",cursive;
-  --body:"Karla",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-[hidden]{display:none!important}
-html{overflow-x:clip}
-html,body{margin:0;background:var(--night);color:var(--cream)}
-body{font-family:var(--body);font-size:16px;line-height:1.5;min-height:100vh;
-  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
-  background:
-    radial-gradient(55% 38% at 50% 30%,rgba(255,170,80,.20),transparent 70%),
-    radial-gradient(90% 60% at 50% 110%,rgba(140,47,67,.35),transparent 70%),
-    linear-gradient(var(--night2),var(--night) 70%);
-  background-color:var(--night)}
-/* faint Victorian tiles, like the old loo walls */
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.03;
-  background-image:linear-gradient(90deg,#000 1px,transparent 1px),linear-gradient(#000 1px,transparent 1px),linear-gradient(135deg,var(--cream) 0 50%,transparent 50%);
-  background-size:36px 18px,36px 18px,36px 18px}
-#fx{position:fixed;inset:0;pointer-events:none;z-index:0}
-.wrap{position:relative;z-index:1;max-width:520px;margin:0 auto;min-height:100vh;
-  padding:28px max(16px,env(safe-area-inset-left,0px)) 56px max(16px,env(safe-area-inset-right,0px));
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center}
-.candles{display:flex;align-items:flex-end;gap:10px;margin-bottom:4px}
-.candle{position:relative;width:22px;border-radius:3px 3px 2px 2px;background:linear-gradient(90deg,#e9dcc6,#fff6e6 45%,#d6c6ab)}
-.candle.a{height:70px}.candle.b{height:96px;width:26px}.candle.c{height:54px}
-.candle:before{content:"";position:absolute;left:50%;top:-7px;width:2px;height:8px;background:#3a2a22;transform:translateX(-50%)}
-.flame{position:absolute;left:50%;bottom:100%;width:14px;height:24px;margin-bottom:5px;transform:translateX(-50%);
-  border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:radial-gradient(circle at 50% 70%,#fff 0 18%,var(--flame) 35%,var(--candle) 60%,rgba(255,140,40,0) 72%);
-  filter:drop-shadow(0 0 10px rgba(255,190,105,.9)) drop-shadow(0 0 26px rgba(255,150,60,.55));
-  transform-origin:50% 90%;animation:flick 2.4s ease-in-out infinite}
-.candle.b .flame{animation-duration:3.1s;animation-delay:-.8s}.candle.c .flame{animation-duration:2.7s;animation-delay:-1.5s}
-@keyframes flick{0%,100%{transform:translateX(-50%) scale(1) rotate(-2deg)}30%{transform:translateX(-50%) scale(1.06,.94) rotate(2deg)}60%{transform:translateX(-50%) scale(.96,1.05) rotate(-1deg)}}
-.drip{position:absolute;top:6px;width:5px;height:14px;border-radius:0 0 4px 4px;background:#f6ecdc}
-.candle.a .drip{left:3px}.candle.b .drip{right:4px;height:20px}.candle.c .drip{left:12px;height:9px}
-.kicker{font-family:var(--hand);font-size:25px;color:var(--muted);margin:0}
-h1,h2{font-family:var(--serif);font-weight:500;margin:0;text-wrap:balance}
-.ask h1{font-size:clamp(40px,11.5vw,58px);line-height:1.02}
-.ask h1 i{color:var(--candle)}
-.ask .again{display:block;font-family:var(--hand);font-style:normal;font-size:.48em;color:var(--muted);margin-top:8px}
-.arena{position:relative;width:100%;height:150px}
-.btn{font:600 18px/1 var(--body);border:0;border-radius:999px;padding:16px 30px;cursor:pointer;touch-action:manipulation;transition:transform .18s ease,background .2s}
-.btn:focus-visible{outline:3px solid var(--candle);outline-offset:3px}
-#yes{position:absolute;left:50%;top:50%;transform:translate(-112%,-50%);background:var(--candle);color:#2a160c;box-shadow:0 10px 34px -8px rgba(255,170,80,.75)}
-#no{position:absolute;left:50%;top:50%;transform:translate(12%,-50%);background:transparent;color:var(--cream);border:1.5px solid rgba(243,230,211,.4);transition:left .25s ease,top .25s ease,transform .25s ease}
-.quip{font-family:var(--hand);font-size:24px;color:var(--candle);min-height:1.4em;margin:0}
-.plan{display:flex;flex-direction:column;gap:14px;align-items:center}
-.plan h2{font-size:clamp(34px,9.5vw,46px);font-weight:700;line-height:1.05}
-.ticket{width:100%;margin-top:6px;background:var(--cream);color:#2a160c;border-radius:12px;padding:20px 18px 18px;position:relative;
-  box-shadow:0 26px 60px -24px rgba(0,0,0,.85),0 0 0 1px rgba(255,191,105,.35) inset;transform:rotate(-1.2deg)}
-.ticket:before,.ticket:after{content:"";position:absolute;top:50%;width:22px;height:22px;border-radius:50%;background:var(--night);transform:translateY(-50%)}
-.ticket:before{left:-11px}.ticket:after{right:-11px}
-.ticket .when{font-family:var(--serif);font-weight:700;font-size:30px;line-height:1.1}
-.ticket .where{font-family:var(--serif);font-size:22px;font-style:italic;color:var(--wine);margin-top:2px}
-.ticket .addr{font-size:13px;letter-spacing:.04em;color:#6b5546;margin-top:4px}
-.ticket .rule{border-top:1.5px dashed rgba(42,22,12,.25);margin:14px 0 12px}
-.ticket p{font-family:var(--hand);font-size:23px;line-height:1.2;margin:4px 0}
-.sub{font-size:14px;color:var(--muted);margin:6px 0 0}
-@media (prefers-reduced-motion:reduce){.flame{animation:none}#no{transition:none}}
-</style>
-</head><body>
-<canvas id="fx" aria-hidden="true"></canvas>
+/* C: "Next train". A Northern line platform at night: tiled wall, black line strip, and a dot-matrix departure board that asks the question, then flips to the plan. */
+:root{--bg:#0d0f13;--panel:#050506;--led:#ffb12e;--led2:rgba(255,177,46,.16);--white:#f3f1ec;--muted:#8d9099;--red:#d8302a;--blue:#1c3f94;
+  --dot:"Doto",ui-monospace,monospace;--sans:"Space Grotesk",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace;--ease:cubic-bezier(.32,.72,0,1);color-scheme:dark}
+*{box-sizing:border-box}html{overflow-x:clip}
+html,body{margin:0;background:var(--bg);color:var(--white)}
+body{min-height:100dvh;font-family:var(--sans);display:grid;grid-template-columns:minmax(0,440px);justify-content:center;align-content:center;padding:max(24px,env(safe-area-inset-top)) 16px max(24px,env(safe-area-inset-bottom))}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;
+  background:radial-gradient(80% 50% at 50% 30%,rgba(255,177,46,.08),transparent 70%),
+   repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 26px),
+   repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 1px,transparent 1px 52px)}
+.wrap{position:relative;z-index:1;width:100%;min-width:0}
+.head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.roundel{position:relative;width:62px;height:62px;flex:none}
+.roundel:before{content:"";position:absolute;inset:6px;border-radius:50%;border:9px solid var(--red)}
+.roundel span{position:absolute;left:-4px;right:-4px;top:50%;transform:translateY(-50%);background:var(--blue);color:#fff;font:700 7.5px var(--sans);letter-spacing:.08em;text-align:center;padding:3px 0;text-transform:uppercase}
+.station{font:700 22px/1 var(--sans);letter-spacing:-.01em}
+.station small{display:block;font:400 10.5px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.line{height:10px;border-radius:2px;background:#000;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);margin:0 0 18px}
+.shell{padding:7px;border-radius:26px;background:linear-gradient(180deg,#24272e,#14161b);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 30px 70px -30px rgba(0,0,0,.9)}
+.board{position:relative;border-radius:19px;background:var(--panel);padding:18px 16px 16px;overflow:hidden;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05),inset 0 10px 30px rgba(0,0,0,.8)}
+.board:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,177,46,.07) 1px,transparent 1.4px);background-size:5px 5px}
+.led{position:relative;font-family:var(--dot);font-weight:900;color:var(--led);text-transform:uppercase;letter-spacing:.04em;text-shadow:0 0 6px rgba(255,177,46,.55),0 0 18px rgba(255,177,46,.25)}
+.r1{display:flex;justify-content:space-between;font-size:18px}
+.big{font-size:clamp(27px,8.2vw,37px);line-height:1.04;margin:14px 0 4px;min-height:3.12em}
+.r3{display:flex;justify-content:space-between;font-size:15px;opacity:.85;margin-top:8px}
+.ticker{overflow:hidden;min-width:0;max-width:100%;white-space:nowrap;border-top:1px solid rgba(255,177,46,.15);margin-top:12px;padding-top:10px;font-size:15px}
+.ticker span{display:inline-block;padding-left:100%;animation:tick 14s linear infinite}
+@keyframes tick{to{transform:translateX(-100%)}}
+.aside{font:400 11px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:16px 0 0;text-align:center}
+.arena{position:relative;height:140px;display:flex;align-items:center;justify-content:center;gap:14px}
+.btn{position:relative;display:inline-flex;align-items:center;gap:12px;border:0;border-radius:999px;padding:9px 9px 9px 24px;font:500 15px var(--sans);color:var(--white);cursor:pointer;touch-action:manipulation;transition:transform .7s var(--ease)}
+.btn .ic{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;transition:transform .6s var(--ease)}
+#yes{background:var(--led);color:#1d1203;box-shadow:0 0 30px rgba(255,177,46,.35)}#yes .ic{background:rgba(29,18,3,.12)}
+#yes:hover .ic{transform:translate(2px,-1px) scale(1.06)}#yes:active{transform:scale(.97)}
+#no{background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);padding:9px 24px}
+#no.gaveup{background:var(--led);color:#1d1203}
+.quip{display:none}
+.mind{font:500 13px var(--sans);letter-spacing:.02em;text-align:center;color:var(--muted);margin:0}
+.mind b{color:var(--white)}
+.after{display:none}.said-yes .before{display:none}.said-yes .after{display:block}
+.reply{font:500 17px var(--sans);text-align:center;margin:22px 0 0}
+.rise{opacity:0;transform:translateY(18px);filter:blur(6px);animation:rise 1s var(--ease) forwards}
+@keyframes rise{to{opacity:1;transform:none;filter:blur(0)}}
+.d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}
+@media (prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none;filter:none}.ticker span{animation:none;padding-left:0}}
+</style></head><body>
 <div class="wrap">
-  <div class="candles" aria-hidden="true">
-    <div class="candle a"><span class="flame"></span><span class="drip"></span></div>
-    <div class="candle b"><span class="flame"></span><span class="drip"></span></div>
-    <div class="candle c"><span class="flame"></span><span class="drip"></span></div>
-  </div>
+  <div class="head rise"><div class="roundel" aria-hidden="true"><span>Date No. 2</span></div>
+    <div class="station">Clapham Common<small>Northern line · Platform 2</small></div></div>
+  <div class="line rise" aria-hidden="true"></div>
 
-  <section class="ask" id="ask">
-    <p class="kicker">Round two. Lights down, candles on.</p>
-    <h1>Alex, will you go on <i>another date with me?</i> <span class="again">(the 11 was noted)</span></h1>
-    <div class="arena" id="arena">
-      <button class="btn" id="yes" type="button">Yes</button>
-      <button class="btn" id="no" type="button">No</button>
+  <div class="shell rise d1"><div class="board">
+    <div class="led r1"><span>1</span><span id="dest">Date No. 2</span><span id="eta">Wed</span></div>
+    <div class="led big" id="big">Alex, will you go on another date with me?</div>
+    <div class="led r3"><span id="s1">Calling at: yes</span><span id="s2">On time</span></div>
+    <div class="led ticker"><span id="tick">Please mind the gap between now and Wednesday · The 11 was noted · Tubes permitting ·</span></div>
+  </div></div>
+
+  <section class="before">
+    <p class="aside rise d2">Please answer the board</p>
+    <div class="arena rise d3" id="arena">
+      <button class="btn" id="yes" type="button"><span class="lbl">Yes</span><span class="ic" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 11 11 3M5 3h6v6"/></svg></span></button>
+      <button class="btn" id="no" type="button"><span class="lbl">No</span></button>
     </div>
+    <p class="mind rise d3"><b>Mind the gap</b> between the buttons.</p>
     <p class="quip" id="quip" aria-live="polite"></p>
   </section>
 
-  <section class="plan" id="plan" hidden>
-    <h2>Excellent choice (again, again, again).</h2>
-    <div class="ticket">
-      <div class="when">Wednesday 2 Dec, 7:30pm</div>
-      <div class="where">WC, Clapham Common</div>
-      <div class="addr">Clapham Common South Side · SW4 7AA</div>
-      <div class="rule"></div>
-      <p>Candlelit wine bar in an old Victorian loo.</p>
-      <p>Yes, really. Trust me.</p>
-      <p>One minute from Clapham Common tube, so you've got no excuse.</p>
-    </div>
-    <p class="sub">Now reply to me like a normal person.</p>
+  <section class="after">
+    <p class="reply">Excellent choice (again, again, again).<br><span style="color:var(--muted);font-weight:400">Now reply to me like a normal person.</span></p>
   </section>
 </div>
-
+<script>
+  // the board shows the No excuses, then flips to the plan on Yes
+  var CH = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:·";
+  function flap(el, text, ms){
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) { el.textContent = text; return; }
+    var start = performance.now(), from = el.textContent;
+    (function f(t){
+      var p = Math.min(1, (t - start) / (ms || 700)), out = "";
+      for (var i = 0; i < text.length; i++) out += (i / text.length < p * 1.2 - .2 || text[i] === " ") ? text[i] : CH[(Math.random() * CH.length) | 0];
+      el.textContent = out; if (p < 1) requestAnimationFrame(f); else el.textContent = text;
+    })(start);
+  }
+  window.onQuip = function(t){ flap(document.getElementById("s1"), t, 500); flap(document.getElementById("s2"), "Delayed", 400); };
+  window.onYes = function(){
+    flap(document.getElementById("dest"), "WC, SW4", 700);
+    flap(document.getElementById("eta"), "19:30", 700);
+    flap(document.getElementById("big"), "Wed 2 Dec · WC Clapham Common", 1300);
+    flap(document.getElementById("s1"), "1 min from the tube", 900);
+    flap(document.getElementById("s2"), "Confirmed", 900);
+    document.getElementById("tick").textContent = "Candlelit wine bar in a Victorian loo · Yes, really · This is a Northern line date to Clapham Common · Please have your best chat ready ·";
+  };
+</script>
 <script>
 (function(){
   "use strict";
   var no = document.getElementById("no"), yes = document.getElementById("yes"), arena = document.getElementById("arena"), quip = document.getElementById("quip");
-  var LINES = ["You've already said yes once", "It's literally round the corner from you", "Alright Ray J, calm down", "The people pleaser in you wants the other button", "Button's still broken, sorry", "OK fine, have it your way"];
-  var tries = 0, reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var LINES = window.NO_LINES || ["You've already said yes once", "It's literally round the corner from you", "Alright Ray J, calm down", "The people pleaser in you wants the other button", "Button's still broken, sorry", "OK fine, have it your way"];
+  var tries = 0, lastDown = 0;
   function dodge(e){
     if (e) e.preventDefault();
     tries++;
     quip.textContent = LINES[Math.min(tries - 1, LINES.length - 1)];
+    if (window.onQuip) window.onQuip(quip.textContent);
     if (tries >= LINES.length) {
-      no.textContent = "Yes";
-      no.style.left = "50%"; no.style.top = "50%"; no.style.transform = "translate(12%,-50%)";
-      no.onclick = accept; no.onpointerenter = null; no.onpointerdown = null;
+      no.classList.add("gaveup"); no.querySelector(".lbl").textContent = "Yes";
+      no.style.transform = ""; no.onclick = accept; no.onpointerenter = null; no.onpointerdown = null;
       return;
     }
     var w = arena.clientWidth, h = arena.clientHeight, bw = no.offsetWidth, bh = no.offsetHeight;
-    var yr = yes.getBoundingClientRect(), ar = arena.getBoundingClientRect(), x, y, k = 0;
-    do { // don't land on top of Yes
-      x = Math.random() * Math.max(0, w - bw); y = Math.random() * Math.max(0, h - bh); k++;
-    } while (k < 20 && x < yr.right - ar.left && x + bw > yr.left - ar.left && y < yr.bottom - ar.top && y + bh > yr.top - ar.top);
-    no.style.left = x + "px"; no.style.top = y + "px";
-    no.style.transform = "scale(" + Math.max(.55, 1 - tries * .08) + ")";
-    yes.style.transform = "translate(-112%,-50%) scale(" + (1 + tries * .07) + ")";
+    var yr = yes.getBoundingClientRect(), ar = arena.getBoundingClientRect(), nr = no.getBoundingClientRect(), x, y, k = 0;
+    var ox = nr.left - ar.left - (no._dx || 0), oy = nr.top - ar.top - (no._dy || 0);
+    do { x = Math.random() * Math.max(0, w - bw); y = Math.random() * Math.max(0, h - bh); k++; }
+    while (k < 30 && x < yr.right - ar.left + 8 && x + bw > yr.left - ar.left - 8 && y < yr.bottom - ar.top + 8 && y + bh > yr.top - ar.top - 8);
+    no._dx = x - ox; no._dy = y - oy;
+    no.style.transform = "translate(" + no._dx + "px," + no._dy + "px) scale(" + Math.max(.6, 1 - tries * .07) + ")";
+    yes.style.transform = "scale(" + (1 + tries * .06) + ")";
   }
-  var lastDown = 0;
   no.onpointerenter = function(e){ if (e.pointerType === "mouse") { lastDown = Date.now(); dodge(); } };
   no.onpointerdown = function(e){ lastDown = Date.now(); dodge(e); };
   no.onclick = function(e){ e.preventDefault(); if (Date.now() - lastDown > 400) dodge(e); };
-
-  function accept(){
-    document.getElementById("ask").hidden = true;
-    document.getElementById("plan").hidden = false;
-    embers(60);
-  }
+  function accept(){ document.body.classList.add("said-yes"); if (window.onYes) window.onYes(); }
   yes.onclick = accept;
-
-  // ---- drifting embers, and a warm burst on yes ----
-  var c = document.getElementById("fx"), x = c.getContext("2d"), W = 0, H = 0, dpr = window.devicePixelRatio || 1, parts = [];
-  function size(){ W = c.width = innerWidth * dpr; H = c.height = innerHeight * dpr; c.style.width = innerWidth + "px"; c.style.height = innerHeight + "px"; }
-  size(); addEventListener("resize", size);
-  function embers(n){ if (reduced) return; for (var i = 0; i < n; i++) parts.push({x:.5 + (Math.random()-.5)*.6, y:1.02 + Math.random()*.3, r:Math.random()*2.4+.8, v:Math.random()*.004+.002, d:Math.random()*6.28, h:i%4===0}); }
-  function heart(cx, cy, s){
-    x.save(); x.translate(cx, cy); x.scale(s/16, s/16); x.beginPath();
-    x.moveTo(0, 5); x.bezierCurveTo(-14, -5, -6, -16, 0, -8); x.bezierCurveTo(6, -16, 14, -5, 0, 5);
-    x.fillStyle = "#c4455c"; x.globalAlpha = .85; x.fill(); x.restore();
-  }
-  if (!reduced) {
-    for (var i = 0; i < 26; i++) parts.push({x:Math.random(), y:Math.random(), r:Math.random()*1.6+.6, v:Math.random()*.0007+.0003, d:Math.random()*6.28, slow:true});
-    (function loop(){
-      x.clearRect(0, 0, W, H);
-      for (var i = parts.length - 1; i >= 0; i--) {
-        var p = parts[i]; p.d += .02; p.y -= p.v;
-        if (p.y < -.03) { if (p.slow) { p.y = 1.03; p.x = Math.random(); } else { parts.splice(i, 1); continue; } }
-        var px = (p.x + Math.sin(p.d)*.01)*W, py = p.y*H;
-        if (p.h) heart(px, py, (p.r*4+6)*dpr);
-        else { x.beginPath(); x.arc(px, py, p.r*dpr, 0, 6.2832); x.fillStyle = "rgba(255,190,105," + (p.slow ? .45 : .9) + ")"; x.fill(); }
-      }
-      requestAnimationFrame(loop);
-    })();
-  }
 })();
 </script>
 </body></html>
