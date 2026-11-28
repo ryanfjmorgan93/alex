@@ -3,12 +3,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta property="og:type" content="website">
-<meta property="og:title" content="The post-match report">
-<meta property="og:description" content="Official scores are in.">
+<meta property="og:title" content="A question for Alex">
+<meta property="og:description" content="Tap to answer.">
 <meta name="theme-color" content="#0e1f1a">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}</style>
 </head><body>
-<title>The post-match report</title>
+<title>A question for Alex</title>
 <meta name="description" content="A question for Alex.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,17 +79,6 @@ body{font-family:var(--body);font-size:16px;line-height:1.55;min-height:100%;
 
 /* ---------- the question ---------- */
 .ask{display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;margin-top:6vh}
-.report{display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center}
-.report h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,10vw,48px);line-height:1.05;margin:0;text-wrap:balance}
-.card{width:100%;background:var(--paper);color:var(--ink);border-radius:10px;padding:18px 18px 16px;box-shadow:0 24px 60px -24px rgba(0,0,0,.7);transform:rotate(-1deg)}
-.scores{list-style:none;margin:0 0 12px;padding:0;font-family:var(--hand);font-size:21px;text-align:left}
-.scores li{display:flex;justify-content:space-between;gap:12px;border-bottom:1.5px dashed rgba(27,38,33,.25);padding:6px 0}
-.scores b{font-weight:400;color:var(--holly);white-space:nowrap}
-.final{display:flex;flex-direction:column;align-items:center;gap:2px;margin-top:6px}
-.final .lab{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#6c6450}
-.final .big{font-family:var(--hand);font-size:84px;line-height:1;color:var(--holly);transform:rotate(-4deg)}
-.final .big small{font-size:.4em;color:var(--ink)}
-.final .why{font-family:var(--hand);font-size:20px;margin:4px 0 0;color:var(--ink)}
 .promise{font-family:var(--hand);font-size:22px;color:var(--muted);text-align:center;margin:8vh 0 0}
 .ask h2{font-family:var(--display);font-weight:500;font-size:clamp(38px,11vw,54px);line-height:1.1;margin:0;text-wrap:balance}
 .ask h2 i{color:var(--foil)}
@@ -205,25 +194,10 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
 <canvas id="fx" aria-hidden="true"></canvas>
 <div class="wrap">
   <svg class="lights" viewBox="0 0 520 60" aria-hidden="true"><path d="M0 10 Q 140 50 260 12 Q 380 50 520 10" fill="none" stroke="#55635c" stroke-width="1.6"/><g class="b"><circle cx="20" cy="23" r="9" fill="#ffcf86" opacity=".28"/><rect x="17.5" y="13" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="20" cy="22" rx="4.2" ry="6" fill="#ffcf86"/></g><g class="b"><circle cx="60" cy="34" r="9" fill="#c22a40" opacity=".28"/><rect x="57.5" y="24" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="60" cy="33" rx="4.2" ry="6" fill="#c22a40"/></g><g class="b"><circle cx="100" cy="42" r="9" fill="#f4efe2" opacity=".28"/><rect x="97.5" y="32" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="100" cy="41" rx="4.2" ry="6" fill="#f4efe2"/></g><g class="b"><circle cx="140" cy="45" r="9" fill="#c8a24c" opacity=".28"/><rect x="137.5" y="35" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="140" cy="44" rx="4.2" ry="6" fill="#c8a24c"/></g><g class="b"><circle cx="180" cy="42" r="9" fill="#2f9a6a" opacity=".28"/><rect x="177.5" y="32" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="180" cy="41" rx="4.2" ry="6" fill="#2f9a6a"/></g><g class="b"><circle cx="220" cy="34" r="9" fill="#ffcf86" opacity=".28"/><rect x="217.5" y="24" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="220" cy="33" rx="4.2" ry="6" fill="#ffcf86"/></g><g class="b"><circle cx="260" cy="23" r="9" fill="#c22a40" opacity=".28"/><rect x="257.5" y="13" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="260" cy="22" rx="4.2" ry="6" fill="#c22a40"/></g><g class="b"><circle cx="300" cy="34" r="9" fill="#f4efe2" opacity=".28"/><rect x="297.5" y="24" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="300" cy="33" rx="4.2" ry="6" fill="#f4efe2"/></g><g class="b"><circle cx="340" cy="42" r="9" fill="#c8a24c" opacity=".28"/><rect x="337.5" y="32" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="340" cy="41" rx="4.2" ry="6" fill="#c8a24c"/></g><g class="b"><circle cx="380" cy="45" r="9" fill="#2f9a6a" opacity=".28"/><rect x="377.5" y="35" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="380" cy="44" rx="4.2" ry="6" fill="#2f9a6a"/></g><g class="b"><circle cx="420" cy="42" r="9" fill="#ffcf86" opacity=".28"/><rect x="417.5" y="32" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="420" cy="41" rx="4.2" ry="6" fill="#ffcf86"/></g><g class="b"><circle cx="460" cy="34" r="9" fill="#c22a40" opacity=".28"/><rect x="457.5" y="24" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="460" cy="33" rx="4.2" ry="6" fill="#c22a40"/></g><g class="b"><circle cx="500" cy="23" r="9" fill="#f4efe2" opacity=".28"/><rect x="497.5" y="13" width="5" height="4" rx="1" fill="#55635c"/><ellipse cx="500" cy="22" rx="4.2" ry="6" fill="#f4efe2"/></g></svg>
-  <p class="promise">The official post-match report</p>
-  <section class="report">
-    <h1>Thanks for coming, Alex.</h1>
-    <div class="card">
-      <ul class="scores">
-        <li><span>Company</span><b>10</b></li>
-        <li><span>Laughs</span><b>10</b></li>
-        <li><span>Mulled white wine hunt</span><b>valiant</b></li>
-        <li><span>Times I stacked it on the ice</span><b>0</b></li>
-        <li><span>Kiss in Leicester Square station</span><b>11</b></li>
-        <li><span>Overall vibe</span><b>electric</b></li>
-      </ul>
-      <div class="final"><span class="lab">Final score</span><span class="big">9<small>/10</small></span>
-        <p class="why">Docked one point because it ended. Rules are rules.</p></div>
-    </div>
-  </section>
+  <p class="promise">As promised. End of play.</p>
 
   <section class="ask" id="ask">
-    <h2>Round two? <i>Same time, new plan?</i></h2>
+    <h2>Alex, will you go on <i>a date with me?</i></h2>
     <div class="arena" id="arena">
       <button class="btn" id="yes" type="button">Yes</button>
       <button class="btn" id="no" type="button">No</button>
@@ -233,9 +207,9 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
 
   <section class="plan" id="plan" hidden>
     <div class="cheers">
-      <h2>Excellent choice (again, again).</h2>
-      <p class="oneline">Score upgraded to 10/10. Plan to follow. Probably another website.</p>
-      <p class="cheers-sub">Now reply to me like a normal person.</p>
+      <h2>Excellent choice.</h2>
+      <p class="oneline">Friday, 7pm, Southbank Winter Market. Mission: find mulled white wine. Then we wing it.</p>
+      <p class="cheers-sub">That's the whole plan. Now reply to me like a normal person.</p>
     </div>
   </section>
 </div>
@@ -245,7 +219,7 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
   "use strict";
   // ---- the No button that would rather not ----
   var no = document.getElementById("no"), yes = document.getElementById("yes"), arena = document.getElementById("arena"), quip = document.getElementById("quip");
-  var LINES = ["Are you sure?", "That's not what the score says", "Alright Ray J, calm down", "The people pleaser in you wants the other button", "Button's still broken, sorry", "It was never going to work", "OK fine, have it your way"];
+  var LINES = ["Are you sure?", "The wine is white though", "Alright Ray J, calm down", "The people pleaser in you wants the other button", "Button's a bit broken, sorry", "It's really not working", "OK fine, have it your way"];
   var tries = 0, reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   function dodge(e){
     if (e) e.preventDefault();
@@ -270,7 +244,7 @@ h3.sec{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18
 
   function accept(){
     var plan = document.getElementById("plan");
-    document.getElementById("ask").hidden = true; document.querySelector(".promise").hidden = true; document.querySelector(".report").hidden = true;
+    document.getElementById("ask").hidden = true; document.querySelector(".promise").hidden = true;
     plan.hidden = false;
     burst();
     setTimeout(function(){ plan.scrollIntoView({behavior: reduced ? "auto" : "smooth", block:"start"}); }, 60);
